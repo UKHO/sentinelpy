@@ -29,10 +29,21 @@ Import `query_sentinel_hub`.
 
     Level for which to log at use `logging` to define correct level
 
-**Returns:** _QuerySentinelProductsResponse_ object
+**Returns:** [_QuerySentinelProductsResponse_](#QuerySentinelProductsResponse) object
 </p>
 </details>
 
+<details id="QuerySentinelProductsResponse">
+<summary><strong>QuerySentinelProductsResponse</strong></summary>
+
+<p>
+
+Represents the result from the Sentinel Hub API
+
+Can be interacted with as an object or in a more functional style using
+the 'on' methods.
+</p>
+</details>
 
 
 
