@@ -90,19 +90,25 @@ class RequestQueryBuilder:
         self.__filters += ["AND"]
         return self
 
-    def or_(self):
+    def or_(self) -> RequestQueryBuilder:
         """Logical or
         """
         self.__filters += ["OR"]
         return self
 
-    def not_(self):
+    def not_(self) -> RequestQueryBuilder:
         """Logical NOT
         """
         self.__filters += ["NOT"]
         return self
 
-    def group_(self, inner_query: Union[RequestQueryBuilder, str]):
+    def group_(self, inner_query: Union[RequestQueryBuilder, str]) -> RequestQueryBuilder:
+        """Create a group in the query.
+
+        Args:
+            inner_query: Union[RequestQueryBuilder, str])
+                The content for the inner query - if a builder calls build
+        """
         group_query = (
             inner_query if isinstance(inner_query, str) else inner_query.build()
         )
