@@ -19,7 +19,7 @@ from .validate_query_builder_args import (
     orbit_number_validator,
     relative_orbit_number_validator,
     string_not_empty_validator,
-    validate_date_value,
+    date_value_validator,
 )
 from .value_formatters import format_footprint, format_number_or_range
 
@@ -143,7 +143,7 @@ class RequestQueryBuilder:
             FilterKeyword.BEGIN_POSITION,
             begin_position_start,
             begin_position_end,
-            validate_date_value,
+            date_value_validator,
             lambda: (
                 "begin_position_start and begin_position_end need to be a full ISO "
                 "date or timestamp relative to now"
@@ -171,7 +171,7 @@ class RequestQueryBuilder:
             FilterKeyword.END_POSITION,
             end_position_start,
             end_position_end,
-            validate_date_value,
+            date_value_validator,
             lambda: (
                 "end_position_start and end_position_end need to be a full ISO "
                 "date or timestamp relative to now"
@@ -199,7 +199,7 @@ class RequestQueryBuilder:
             FilterKeyword.INGESTION_DATE,
             ingestion_date_start,
             ingestion_date_end,
-            validate_date_value,
+            date_value_validator,
             lambda: (
                 "ingestion_date_start and ingestion_date_end need to be a full ISO "
                 "date or timestamp relative to now"

@@ -16,8 +16,8 @@ POINT_PATTERN = re.compile(
 )
 
 
-def validate_date_value(date_val: str) -> Optional[str]:
-    """Validates the parameter to check it is valid or not
+def date_value_validator(date_val: str) -> Optional[str]:
+    """Validates the parameter to check it is valid date or not
 
     Args:
         date_val::str

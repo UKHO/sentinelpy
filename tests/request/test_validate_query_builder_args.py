@@ -6,7 +6,7 @@ from query_sentinel_products.request.validate_query_builder_args import (
     orbit_number_validator,
     relative_orbit_number_validator,
     string_not_empty_validator,
-    validate_date_value,
+    date_value_validator,
 )
 
 
@@ -16,7 +16,7 @@ class TestValidateQueryBuilderArgs:
     ):
         date_val = "2020-01-01T00:00:00.000Z"
 
-        result = validate_date_value(date_val)
+        result = date_value_validator(date_val)
 
         assert_that(result).is_not_none().is_equal_to(date_val)
 
@@ -33,7 +33,7 @@ class TestValidateQueryBuilderArgs:
 
         with soft_assertions():
             for date_val in date_vals:
-                assert_that(validate_date_value(date_val)).is_equal_to(date_val)
+                assert_that(date_value_validator(date_val)).is_equal_to(date_val)
 
     def test_when_validate_date_supplied_with_invalid_value_then_returns_none(self):
         date_vals = [
@@ -47,7 +47,7 @@ class TestValidateQueryBuilderArgs:
 
         with soft_assertions():
             for date_val in date_vals:
-                assert_that(validate_date_value(date_val)).is_none()
+                assert_that(date_value_validator(date_val)).is_none()
 
     def test_when_string_not_empty_validator_non_empty_string_then_returns_input(self,):
         str_val = "Not Empty"
