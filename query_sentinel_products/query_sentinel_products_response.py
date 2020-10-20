@@ -77,7 +77,7 @@ class QuerySentinelProductsResponse:
         )
 
     @property
-    def tuple(self):
+    def tuple(self) -> QuerySentinelProductsResponseTuple:
         """Converts the result into a named tuple so that it can be
         easily consumed."""
         return QuerySentinelProductsResponseTuple(
@@ -126,7 +126,9 @@ class QuerySentinelProductsResponse:
             callback(self.__error)
         return self
 
-    def on_failure(self, callback: Callable[[int, Dict[str, Any]], None]):
+    def on_failure(
+        self, callback: Callable[[int, Dict[str, Any]], None]
+    ) -> "QuerySentinelProductsResponse":
         """Calls callback if API call failed because the API call failed
         because a non-2XX response code was received
 

@@ -13,4 +13,6 @@ class QuerySentinelProductsError(BaseException):
         return (
             isinstance(o, QuerySentinelProductsError)
             and o.response_data == self.response_data
+            and o.status_code == self.status_code
+            and o.source == self.source
         )

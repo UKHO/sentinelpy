@@ -1,6 +1,7 @@
 import json
 import logging
 import re
+from os import getcwd
 
 import requests
 import responses
@@ -14,10 +15,7 @@ from query_sentinel_products import (
     query_sentinel_hub,
 )
 
-__SENTINEL_HUB_URL_PATTERN = (
-    "https://scihub.copernicus.eu/dhus/search?q={query}"
-    "&rows={rows}&start={start}{additional_params}&format=json"
-)
+DATA_DIR = f"{getcwd()}/tests/data" if "tests" not in getcwd() else f"{getcwd()}/data"
 
 
 class TestQuerySentinelProducts:
@@ -28,7 +26,8 @@ class TestQuerySentinelProducts:
             "AND%20producttype:GRD&rows=30&start=0&format=json"
         )
 
-        with open("tests/data/sentinel.api.json", "r") as sentinel_data:
+
+        with open(f"{DATA_DIR}/sentinel.api.json", "r") as sentinel_data:
             json_data = sentinel_data.read()
 
         sentinel_data = json.loads(json_data)

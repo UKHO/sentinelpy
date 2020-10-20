@@ -412,19 +412,23 @@ class RequestQueryBuilder:
 
     def build(self) -> str:
         """Build the value for 'q'"""
-        q = ""
+        query = ""
         prev_filter = ""
-        for q_filter in self.__filters:
+        for curr_filter in self.__filters:
             if (
                 prev_filter != ""
-                and not RequestQueryBuilder.__is_operator(q_filter)
+                and not RequestQueryBuilder.__is_operator(curr_filter)
                 and not RequestQueryBuilder.__is_operator(prev_filter)
             ):
-                q += "AND "
-            q += f"{q_filter} "
-            prev_filter = q_filter
-        hanging_operator_pattern = re.compile(r"^(?:AND|OR)\s*|\s*(?:AND|OR|NOT)?\s*$")
-        return hanging_operator_pattern.sub("", q) if q != "" else "*"
+                query += "AND "
+            query += f"{curr_filter} "
+            prev_filter = curr_filter
+
+        return (
+            RequestQueryBuilder.__strip_dangling_operator_and_whitespace(query)
+            if query != ""
+            else "*"
+        )
 
     def __add_range_keyword_filter(
         self,
@@ -464,3 +468,8 @@ class RequestQueryBuilder:
     @staticmethod
     def __is_operator(filter_val: str):
         return filter_val in ["AND", "OR", "NOT"]
+
+    @staticmethod
+    def __strip_dangling_operator_and_whitespace(query):
+        hanging_operator_pattern = re.compile(r"^(?:AND|OR)\s*|\s*(?:AND|OR|NOT)?\s*$")
+        return hanging_operator_pattern.sub("", query)

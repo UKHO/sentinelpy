@@ -118,15 +118,16 @@ class TestQuerySentinelHub:
         )
 
     def test_when_response_is_not_json_then_returns_content_as_string_with_error(self):
+        original_error = ValueError()
         self.requests_mock.get.return_value.status_code = 200
-        self.requests_mock.get.return_value.json.side_effect = ValueError()
+        self.requests_mock.get.return_value.json.side_effect = original_error
         self.requests_mock.get.return_value.content = "Not json".encode()
 
         result = query_sentinel_hub(self.sentinel_product_request)
 
         assert_that(result).is_equal_to(
             QuerySentinelProductsResponse(
-                200, None, QuerySentinelProductsError(ValueError(), 200, "Not json")
+                200, None, QuerySentinelProductsError(original_error, 200, "Not json")
             )
         )
 

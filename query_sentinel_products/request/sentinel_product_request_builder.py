@@ -11,6 +11,9 @@ class SentinelProductRequestBuilder:
     __username: Optional[str]
     __password: Optional[str]
     __query: Union[RequestQueryBuilder, str]
+    __order_by: Optional[str]
+    __rows: int
+    __start: int
 
     def __init__(
         self,
