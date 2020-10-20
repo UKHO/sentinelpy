@@ -8,10 +8,39 @@ Queries ESA Sentinel APIs for products
 
 * Free software: MIT license
 
+# Usage
+Import `query_sentinel_hub`.
+
+<details>
+<summary>query_sentinel_hub</summary>
+
+<p>
+
+**Positional arguments:**
+
+* `sentinel_product_request` (_SentinelProductRequest_)
+
+    Request object containing the details of the query. You can use the builder to
+    construct
+
+**Keyword arguments:**
+
+* `log_level` (_int_)
+
+    Level for which to log at use `logging` to define correct level
+
+**Returns:** _QuerySentinelProductsResponse_ object
+</p>
+</details>
+
+
+
+
+## `QuerySentinelProductsResponse`
 
 # Features
 
-* TODO
+* Queries the Sentinel Hub for products
 
 # Credits
 
