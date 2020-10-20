@@ -12,7 +12,7 @@ Queries ESA Sentinel APIs for products
 Import `query_sentinel_hub`.
 
 <details>
-<summary>query_sentinel_hub</summary>
+<summary><strong>query_sentinel_hub</strong></summary>
 
 <p>
 
