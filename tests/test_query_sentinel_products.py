@@ -1,9 +1,9 @@
-from unittest.mock import Mock, patch
+from unittest.mock import patch
 
 import pytest
 from assertpy import assert_that
 
-from query_sentinel_products import query_sentinel_hub, SentinelProductRequest
+from query_sentinel_products import SentinelProductRequest, query_sentinel_hub
 
 
 @pytest.fixture()
@@ -23,7 +23,12 @@ class TestQuerySentinelProducts:
             "*", 30, "beginposition asc", 0, "test-user", "test-password"
         )
         self.sentinel_product_request_with_query = SentinelProductRequest(
-            "platformname:Sentinel-1 AND cloudcoverpercentage:5", 30, None, 0, "test-user", "test-password"
+            "platformname:Sentinel-1 AND cloudcoverpercentage:5",
+            30,
+            None,
+            0,
+            "test-user",
+            "test-password",
         )
 
     def test_when_called_then_calls_api(self):
@@ -50,13 +55,16 @@ class TestQuerySentinelProducts:
         )
 
     def test_when_query_called_with_ordering_then_calls_correct_url(self):
+        exected_url = (
+            "https://scihub.copernicus.eu/dhus/search?q=*&"
+            "rows=30&start=0&orderby=beginposition asc&format=json"
+        )
+
         query_sentinel_hub(self.ordered_sentinel_product_request)
 
         requests_call_args = self.requests_mock.get.call_args.args
 
-        assert_that(requests_call_args[0]).is_equal_to(
-            "https://scihub.copernicus.eu/dhus/search?q=*&rows=30&start=0&orderby=beginposition asc&format=json"
-        )
+        assert_that(requests_call_args[0]).is_equal_to(exected_url)
 
     def test_when_query_supplied_then_the_url_contains_query(self):
         expected_url = (

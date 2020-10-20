@@ -4,10 +4,11 @@ __author__ = """UK Hydrographic Office"""
 __email__ = "datascienceandengineering@ukho.gov.uk"
 __version__ = "0.1.0"
 
-from .request.model import (
-    SentinelProductRequest,
+from .query_sentinel_products import query_sentinel_hub  # noqa: F401
+from .request.model import (  # noqa: F401
     OrbitDirection,
     PlatformName,
+    PolarisationMode,
     ProductType,
     SensorOperationalMode,
     Sentinel1ProductType,
@@ -16,12 +17,12 @@ from .request.model import (
     Sentinel5PProductType,
     SentinelProductRequest,
     SwathIdentifier,
-    PolarisationMode,
-    SensorOperationalMode,
-    Sentinel1ProductType,
-    SwathIdentifier,
     Timeliness,
 )
-from .request.request_query_builder import RequestQueryBuilder, range_value
-from .request.sentinel_product_request_builder import SentinelProductRequestBuilder
-from .query_sentinel_products import query_sentinel_hub
+from .request.request_query_builder import (  # noqa: F401
+    RequestQueryBuilder,
+    range_value,
+)
+from .request.sentinel_product_request_builder import (  # noqa: F401
+    SentinelProductRequestBuilder,
+)

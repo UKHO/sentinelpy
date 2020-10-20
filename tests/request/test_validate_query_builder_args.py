@@ -2,11 +2,11 @@ from assertpy import assert_that, soft_assertions
 
 from query_sentinel_products.request.validate_query_builder_args import (
     cloud_coverage_percentage_validator,
+    date_value_validator,
     geometry_type_validator,
     orbit_number_validator,
     relative_orbit_number_validator,
     string_not_empty_validator,
-    date_value_validator,
 )
 
 

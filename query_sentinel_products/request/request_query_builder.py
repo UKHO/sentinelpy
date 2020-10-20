@@ -15,11 +15,11 @@ from .model import (
 )
 from .validate_query_builder_args import (
     cloud_coverage_percentage_validator,
+    date_value_validator,
     geometry_type_validator,
     orbit_number_validator,
     relative_orbit_number_validator,
     string_not_empty_validator,
-    date_value_validator,
 )
 from .value_formatters import format_footprint, format_number_or_range
 
@@ -84,25 +84,27 @@ class RequestQueryBuilder:
     def __init__(self):
         self.__filters: List[str] = []
 
-    def and_(self) -> RequestQueryBuilder:
+    def and_(self) -> "RequestQueryBuilder":
         """Logical and
         """
         self.__filters += ["AND"]
         return self
 
-    def or_(self) -> RequestQueryBuilder:
+    def or_(self) -> "RequestQueryBuilder":
         """Logical or
         """
         self.__filters += ["OR"]
         return self
 
-    def not_(self) -> RequestQueryBuilder:
+    def not_(self) -> "RequestQueryBuilder":
         """Logical NOT
         """
         self.__filters += ["NOT"]
         return self
 
-    def group_(self, inner_query: Union[RequestQueryBuilder, str]) -> RequestQueryBuilder:
+    def group_(
+        self, inner_query: Union[RequestQueryBuilder, str]
+    ) -> "RequestQueryBuilder":
         """Create a group in the query.
 
         Args:
@@ -115,7 +117,7 @@ class RequestQueryBuilder:
         self.__filters += [f"({group_query})"]
         return self
 
-    def platform_name(self, platform_name: PlatformName) -> RequestQueryBuilder:
+    def platform_name(self, platform_name: PlatformName) -> "RequestQueryBuilder":
         """Filter on platform name
         """
         self.__add_filter(FilterKeyword.PLATFORM_NAME, platform_name.value)
@@ -123,7 +125,7 @@ class RequestQueryBuilder:
 
     def begin_position(
         self, begin_position_start: str, begin_position_end: str
-    ) -> RequestQueryBuilder:
+    ) -> "RequestQueryBuilder":
         """Filter on beginposition
 
         Args:
@@ -152,7 +154,7 @@ class RequestQueryBuilder:
 
     def end_position(
         self, end_position_start: str, end_position_end: str
-    ) -> RequestQueryBuilder:
+    ) -> "RequestQueryBuilder":
         """Sets a filter on the end position date ranges
 
         Args:
@@ -180,7 +182,7 @@ class RequestQueryBuilder:
 
     def ingestion_date(
         self, ingestion_date_start: str, ingestion_date_end: str
-    ) -> RequestQueryBuilder:
+    ) -> "RequestQueryBuilder":
         """Sets a filter on the ingestion date using supplied range
 
         Args:
@@ -206,7 +208,7 @@ class RequestQueryBuilder:
             ),
         )
 
-    def collection(self, collection: str) -> RequestQueryBuilder:
+    def collection(self, collection: str) -> "RequestQueryBuilder":
         """Sets a filter on the collection
 
         Args:
@@ -223,7 +225,7 @@ class RequestQueryBuilder:
             lambda: "collection should not be empty",
         )
 
-    def file_name(self, filename: str) -> RequestQueryBuilder:
+    def file_name(self, filename: str) -> "RequestQueryBuilder":
         """Sets a filter on filename
 
         Args:
@@ -240,7 +242,7 @@ class RequestQueryBuilder:
             lambda: "filename should not be empty",
         )
 
-    def footprint(self, geographic_type: str) -> RequestQueryBuilder:
+    def footprint(self, geographic_type: str) -> "RequestQueryBuilder":
         """Sets a filter on footprint - i.e. Area Of Interest
 
         Args:
@@ -263,7 +265,7 @@ class RequestQueryBuilder:
             "pair or simple polygon",
         )
 
-    def orbit_number(self, orbit_number: Union[int, str]) -> RequestQueryBuilder:
+    def orbit_number(self, orbit_number: Union[int, str]) -> "RequestQueryBuilder":
         """Adds a filter on orbitnumber
 
         Args:
@@ -284,7 +286,7 @@ class RequestQueryBuilder:
             ),
         )
 
-    def last_orbit_number(self, orbit_number: Union[int, str]) -> RequestQueryBuilder:
+    def last_orbit_number(self, orbit_number: Union[int, str]) -> "RequestQueryBuilder":
         """Adds a filter for lastorbitnumber
 
         Args:
@@ -307,7 +309,7 @@ class RequestQueryBuilder:
 
     def relative_orbit_number(
         self, orbit_number: Union[int, str]
-    ) -> RequestQueryBuilder:
+    ) -> "RequestQueryBuilder":
         """Sets query for relative orbit number
 
         Args:
@@ -330,7 +332,7 @@ class RequestQueryBuilder:
 
     def last_relative_orbit_number(
         self, orbit_number: Union[int, str]
-    ) -> RequestQueryBuilder:
+    ) -> "RequestQueryBuilder":
         """Sets query for last relative orbit number
 
         Args:
@@ -351,19 +353,19 @@ class RequestQueryBuilder:
             ),
         )
 
-    def orbit_direction(self, orbit_direction: OrbitDirection) -> RequestQueryBuilder:
+    def orbit_direction(self, orbit_direction: OrbitDirection) -> "RequestQueryBuilder":
         """Set filter on orbit direction"""
         self.__add_filter(FilterKeyword.ORBIT_DIRECTION, orbit_direction.value)
         return self
 
     def polarisation_mode(
         self, polarisation_mode: PolarisationMode
-    ) -> RequestQueryBuilder:
+    ) -> "RequestQueryBuilder":
         """Set filter on polarisation mode"""
         self.__add_filter(FilterKeyword.POLARISATION_MODE, polarisation_mode.value)
         return self
 
-    def product_type(self, product_type: ProductType) -> RequestQueryBuilder:
+    def product_type(self, product_type: ProductType) -> "RequestQueryBuilder":
         """Set filter on product type"""
         self.__add_filter(FilterKeyword.PRODUCT_TYPE, product_type.value)
         return self
@@ -377,14 +379,14 @@ class RequestQueryBuilder:
 
     def swath_identifier(
         self, swath_identifier: SwathIdentifier
-    ) -> RequestQueryBuilder:
+    ) -> "RequestQueryBuilder":
         """Set filter on swath identifier"""
         self.__add_filter(FilterKeyword.SWATH_IDENTIFIER, swath_identifier.value)
         return self
 
     def cloud_cover_percentage(
         self, percentage: Union[int, str]
-    ) -> RequestQueryBuilder:
+    ) -> "RequestQueryBuilder":
         """Sets a filter on cloud cover percentage.
 
         Args:
@@ -405,7 +407,7 @@ class RequestQueryBuilder:
             ),
         )
 
-    def timeliness(self, timeliness: Timeliness) -> RequestQueryBuilder:
+    def timeliness(self, timeliness: Timeliness) -> "RequestQueryBuilder":
         """Set filter on timeliness"""
         self.__add_filter(FilterKeyword.TIMELINESS, timeliness.value)
         return self
@@ -433,7 +435,7 @@ class RequestQueryBuilder:
         end: str,
         validator: Callable[[str], Optional[str]],
         invalid_msg_cb: Callable[[], str],
-    ) -> RequestQueryBuilder:
+    ) -> "RequestQueryBuilder":
         valid_start = validator(start)
         valid_end = validator(end)
 
@@ -449,7 +451,7 @@ class RequestQueryBuilder:
         val: str,
         validator: Callable[[str], Optional[str]],
         invalid_msg_cb: Callable[[], str],
-    ) -> RequestQueryBuilder:
+    ) -> "RequestQueryBuilder":
         valid_value = validator(val)
 
         if valid_value:

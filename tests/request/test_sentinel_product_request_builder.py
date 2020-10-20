@@ -1,11 +1,10 @@
-from unittest.mock import Mock
-
 from assertpy import assert_that
 
 from query_sentinel_products import (
+    PlatformName,
     RequestQueryBuilder,
     SentinelProductRequest,
-    SentinelProductRequestBuilder, PlatformName,
+    SentinelProductRequestBuilder,
 )
 
 

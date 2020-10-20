@@ -1,7 +1,6 @@
 import re
 from functools import reduce
-from re import Match, Pattern
-from typing import Optional
+from typing import Any, Optional
 
 DATE_TIME_PATTERN = re.compile(r"^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}\.\d{3}Z$")
 RELATIVE_DATE_PATTERN = re.compile(r"^NOW(?:-\d+(?:MINUTE|HOUR|DAY|MONTH)S?)?$")
@@ -134,7 +133,7 @@ def cloud_coverage_percentage_validator(
     )
 
 
-def __number_or_range_pattern(valid_number_len: int) -> Pattern:
+def __number_or_range_pattern(valid_number_len: int) -> Any:
     return re.compile(
         r"^\[(\d{1,"
         + str(valid_number_len)
@@ -146,7 +145,7 @@ def __number_or_range_pattern(valid_number_len: int) -> Pattern:
     )
 
 
-def __all_values_in_range(match: Match, smallest: int, largest: int) -> bool:
+def __all_values_in_range(match: Any, smallest: int, largest: int) -> bool:
     count_invalid = reduce(
         lambda acc, x: acc + 1
         if x is not None and (int(x) < smallest or int(x) > largest)

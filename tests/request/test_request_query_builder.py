@@ -5,14 +5,15 @@ from assertpy import assert_that
 from query_sentinel_products import (
     OrbitDirection,
     PlatformName,
-    RequestQueryBuilder,
-    range_value,
     PolarisationMode,
+    RequestQueryBuilder,
     SensorOperationalMode,
     Sentinel1ProductType,
     SwathIdentifier,
     Timeliness,
+    range_value,
 )
+
 
 class TestRequestQueryBuilder:
     def test_when_range_value_called_with_strings_supplied_then_creates_value_correctly(
@@ -41,18 +42,18 @@ class TestRequestQueryBuilder:
             "beginposition:[2020-01-01T00:00:00.000Z TO 2020-02-01T00:00:00.000Z]"
         )
 
-    @patch("query_sentinel_products.request.request_query_builder.validate_date_value")
+    @patch("query_sentinel_products.request.request_query_builder.date_value_validator")
     def test_when_begin_position_supplied_then_validates_both_start_and_end_date(
-        self, validate_date_value_mock
+        self, date_value_validator_mock
     ):
-        validate_date_value_mock.return_value = "2020-01-01T00:00:00.000Z"
+        date_value_validator_mock.return_value = "2020-01-01T00:00:00.000Z"
 
         RequestQueryBuilder().begin_position(
             "2020-01-01T00:00:00.000Z", "2020-02-01T00:00:00.000Z"
         ).build()
 
-        assert_that(validate_date_value_mock.call_count).is_equal_to(2)
-        validate_date_value_mock.assert_has_calls(
+        assert_that(date_value_validator_mock.call_count).is_equal_to(2)
+        date_value_validator_mock.assert_has_calls(
             [call("2020-01-01T00:00:00.000Z"), call("2020-02-01T00:00:00.000Z")]
         )
 
@@ -76,18 +77,18 @@ class TestRequestQueryBuilder:
             "endposition:[2020-03-01T00:00:00.000Z TO 2020-04-01T00:00:00.000Z]"
         )
 
-    @patch("query_sentinel_products.request.request_query_builder.validate_date_value")
+    @patch("query_sentinel_products.request.request_query_builder.date_value_validator")
     def test_when_end_position_supplied_then_validates_both_start_and_end_date(
-        self, validate_date_value_mock
+        self, date_value_validator_mock
     ):
-        validate_date_value_mock.return_value = "2020-01-01T00:00:00.000Z"
+        date_value_validator_mock.return_value = "2020-01-01T00:00:00.000Z"
 
         RequestQueryBuilder().end_position(
             "2020-03-01T00:00:00.000Z", "2020-04-01T00:00:00.000Z"
         )
 
-        assert_that(validate_date_value_mock.call_count).is_equal_to(2)
-        validate_date_value_mock.assert_has_calls(
+        assert_that(date_value_validator_mock.call_count).is_equal_to(2)
+        date_value_validator_mock.assert_has_calls(
             [call("2020-03-01T00:00:00.000Z"), call("2020-04-01T00:00:00.000Z")]
         )
 
@@ -111,18 +112,18 @@ class TestRequestQueryBuilder:
             "ingestiondate:[2020-05-01T00:00:00.000Z TO 2020-06-01T00:00:00.000Z]"
         )
 
-    @patch("query_sentinel_products.request.request_query_builder.validate_date_value")
+    @patch("query_sentinel_products.request.request_query_builder.date_value_validator")
     def test_when_ingestion_date_supplied_then_validates_both_start_and_end_date(
-        self, validate_date_value_mock
+        self, date_value_validator_mock
     ):
-        validate_date_value_mock.return_value = "2020-01-01T00:00:00.000Z"
+        date_value_validator_mock.return_value = "2020-01-01T00:00:00.000Z"
 
         RequestQueryBuilder().ingestion_date(
             "2020-03-01T00:00:00.000Z", "2020-04-01T00:00:00.000Z"
         )
 
-        assert_that(validate_date_value_mock.call_count).is_equal_to(2)
-        validate_date_value_mock.assert_has_calls(
+        assert_that(date_value_validator_mock.call_count).is_equal_to(2)
+        date_value_validator_mock.assert_has_calls(
             [call("2020-03-01T00:00:00.000Z"), call("2020-04-01T00:00:00.000Z")]
         )
 

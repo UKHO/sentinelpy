@@ -28,7 +28,7 @@ class SentinelProductRequestBuilder:
         self.__order_by = default_order_by
         self.__start = default_start
 
-    def with_username(self, username: str) -> SentinelProductRequestBuilder:
+    def with_username(self, username: str) -> "SentinelProductRequestBuilder":
         """ Sets the Sentinel Hub username
 
         Args:
@@ -41,7 +41,7 @@ class SentinelProductRequestBuilder:
         self.__username = username
         return self
 
-    def with_password(self, password: str) -> SentinelProductRequestBuilder:
+    def with_password(self, password: str) -> "SentinelProductRequestBuilder":
         """ Sets the Sentinel Hub password
 
         Args:
@@ -56,7 +56,7 @@ class SentinelProductRequestBuilder:
 
     def with_query(
         self, query: Union[str, RequestQueryBuilder]
-    ) -> SentinelProductRequestBuilder:
+    ) -> "SentinelProductRequestBuilder":
         """ Sets the query value
         Args:
             query::[Union[str, RequestQueryBuilder]]
@@ -69,7 +69,7 @@ class SentinelProductRequestBuilder:
         self.__query = query
         return self
 
-    def with_rows(self, rows: int) -> SentinelProductRequestBuilder:
+    def with_rows(self, rows: int) -> "SentinelProductRequestBuilder":
         """ Sets the rows value
         Args:
             rows::int
@@ -81,7 +81,7 @@ class SentinelProductRequestBuilder:
         self.__rows = rows
         return self
 
-    def with_ordering(self, order_by: str) -> SentinelProductRequestBuilder:
+    def with_ordering(self, order_by: str) -> "SentinelProductRequestBuilder":
         """ Sets the ordering/order_by value
         Args:
             order_by::str
@@ -94,7 +94,7 @@ class SentinelProductRequestBuilder:
         self.__order_by = order_by
         return self
 
-    def with_start(self, start: int) -> SentinelProductRequestBuilder:
+    def with_start(self, start: int) -> "SentinelProductRequestBuilder":
         """ Sets the start number/offset. Used for paginating results
         Args:
             start::int
