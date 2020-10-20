@@ -3,3 +3,5 @@
 __author__ = """UK Hydrographic Office"""
 __email__ = "datascienceandengineering@ukho.gov.uk"
 __version__ = "0.1.0"
+
+from query_sentinel_products.query_sentinel_products import query

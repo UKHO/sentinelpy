@@ -31,6 +31,7 @@ readme = "README.md"
 mypy = "^0.782"
 python = "^3.6"
 boto3 = "^1.15.16"
+requests = "^2.24.0"
 
 [tool.poetry.dev-dependencies]
 assertpy = "^1.0"
