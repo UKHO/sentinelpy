@@ -101,7 +101,7 @@ class RequestQueryBuilder:
         return self
 
     def group_(
-        self, inner_query: Union[RequestQueryBuilder, str]
+        self, inner_query: Union["RequestQueryBuilder", str]
     ) -> "RequestQueryBuilder":
         """Create a group in the query.
 
@@ -134,7 +134,7 @@ class RequestQueryBuilder:
                 End of the period, in ISO date/time stamp with millis, or relative
                 to NOW (e.g. NOW/NOW-1DAY etc.)
 
-        Side Effects:
+        Raises:
             ValueError - if begin_position_start or begin_position_end are invalid
             ISO dates/relative dates
         """
@@ -163,7 +163,7 @@ class RequestQueryBuilder:
                 End of the period, in ISO date/time stamp with millis, or relative to
                 NOW (e.g. NOW/NOW-1DAY etc.)
 
-         Side Effects:
+         Raises:
             ValueError - if end_position_start or end_position_end are invalid ISO
             dates/relative dates
         """
@@ -191,7 +191,7 @@ class RequestQueryBuilder:
                 End of the period, in ISO date/time stamp with millis, or relative
                 to NOW (e.g. NOW/NOW-1DAY etc.)
 
-        Side Effects:
+        Raises:
             ValueError - if end_position_start or end_position_end are invalid ISO
             dates/relative dates
         """
@@ -213,7 +213,7 @@ class RequestQueryBuilder:
             collection::str
                 Name of the collection
 
-        Side Effects:
+        Raises:
             ValueError - If collection is blank - i.e. '' or just whitespace e.g. ' '
         """
         return self.__add_keyword_filter(
@@ -230,7 +230,7 @@ class RequestQueryBuilder:
             filename::str
                 Name of the Sentinel image file to filter results by
 
-        Side Effects:
+        Raises:
             ValueError - If filename is blank - i.e. '' or just whitespace e.g. ' '
         """
         return self.__add_keyword_filter(
@@ -251,7 +251,7 @@ class RequestQueryBuilder:
 
                 Can have the Intersects() or can be just the coordinate pair or Polygon
 
-        Side Effects:
+        Raises:
             ValueError - If supplied geographic type is not supported Geographic format
             i.e. long/lat pair or WKT polygon
         """
@@ -271,7 +271,7 @@ class RequestQueryBuilder:
                 The orbit number or range that should be used. Can be a single value
                 i.e. 1234 or a range such as [1234 TO 4321]
 
-        Side Effects:
+        Raises:
             ValueError - If orbit_number is not a single value of range (1-999999)
         """
         return self.__add_keyword_filter(
@@ -292,7 +292,7 @@ class RequestQueryBuilder:
                 The orbit number or range that should be used. Can be a single value
                 i.e. 1234 or a range such as [1234 TO 4321]
 
-        Side Effects:
+        Raises:
             ValueError - If orbit_number is not a single value of range (1-999999)
         """
         return self.__add_keyword_filter(
@@ -315,7 +315,7 @@ class RequestQueryBuilder:
                 The orbit number or range that should be used. Can be a single value
                 i.e. 20 or a range such as [1 TO 170]
 
-        Side Effects:
+        Raises:
             ValueError - If orbit_number is not a single value of range (1-175)
         """
         return self.__add_keyword_filter(
@@ -338,7 +338,7 @@ class RequestQueryBuilder:
                 The orbit number or range that should be used. Can be a single value
                 i.e. 20 or a range such as [1 TO 170]
 
-        Side Effects:
+        Raises:
             ValueError - If orbit_number is not a single value of range (1-175)
         """
         return self.__add_keyword_filter(
@@ -392,7 +392,7 @@ class RequestQueryBuilder:
                 Acceptable limits of cloud cover. Can be an int between 0 and 100, or
                 a range with the same limits
 
-        Side Effects:
+        Raises:
             ValueError - if percentage is not a valid integral percentage
         """
         return self.__add_keyword_filter(

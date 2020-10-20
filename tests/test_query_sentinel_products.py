@@ -1,80 +1,127 @@
-from unittest.mock import patch
+import json
+import logging
+import re
 
-import pytest
+import requests
+import responses
 from assertpy import assert_that
 
-from query_sentinel_products import SentinelProductRequest, query_sentinel_hub
+from query_sentinel_products import (
+    PlatformName,
+    RequestQueryBuilder,
+    Sentinel1ProductType,
+    SentinelProductRequestBuilder,
+    query_sentinel_hub,
+)
 
-
-@pytest.fixture()
-def requests_mock():
-    with patch("query_sentinel_products.query_sentinel_products.requests") as mock:
-        yield mock
+__SENTINEL_HUB_URL_PATTERN = (
+    "https://scihub.copernicus.eu/dhus/search?q={query}"
+    "&rows={rows}&start={start}{additional_params}&format=json"
+)
 
 
 class TestQuerySentinelProducts:
-    @pytest.fixture(autouse=True)
-    def setup_fixtures(self, requests_mock):
-        self.requests_mock = requests_mock
-        self.sentinel_product_request = SentinelProductRequest(
-            "*", 30, None, 0, "test-user", "test-password"
-        )
-        self.ordered_sentinel_product_request = SentinelProductRequest(
-            "*", 30, "beginposition asc", 0, "test-user", "test-password"
-        )
-        self.sentinel_product_request_with_query = SentinelProductRequest(
-            "platformname:Sentinel-1 AND cloudcoverpercentage:5",
-            30,
-            None,
-            0,
-            "test-user",
-            "test-password",
-        )
-
-    def test_when_called_then_calls_api(self):
-        query_sentinel_hub(self.sentinel_product_request)
-
-        self.requests_mock.get.assert_called_once()
-
-    def test_when_query_called_then_calls_are_authenticated(self):
-        query_sentinel_hub(self.sentinel_product_request)
-
-        requests_call_kwargs = self.requests_mock.get.call_args.kwargs
-
-        assert_that(requests_call_kwargs["auth"]).is_equal_to(
-            ("test-user", "test-password")
-        )
-
-    def test_when_query_called_without_ordering_then_calls_correct_url(self):
-        query_sentinel_hub(self.sentinel_product_request)
-
-        requests_call_args = self.requests_mock.get.call_args.args
-
-        assert_that(requests_call_args[0]).is_equal_to(
-            "https://scihub.copernicus.eu/dhus/search?q=*&rows=30&start=0&format=json"
-        )
-
-    def test_when_query_called_with_ordering_then_calls_correct_url(self):
-        exected_url = (
-            "https://scihub.copernicus.eu/dhus/search?q=*&"
-            "rows=30&start=0&orderby=beginposition asc&format=json"
-        )
-
-        query_sentinel_hub(self.ordered_sentinel_product_request)
-
-        requests_call_args = self.requests_mock.get.call_args.args
-
-        assert_that(requests_call_args[0]).is_equal_to(exected_url)
-
-    def test_when_query_supplied_then_the_url_contains_query(self):
+    @responses.activate
+    def test_when_successful_request_made_then_returns_products(self):
         expected_url = (
-            "https://scihub.copernicus.eu/dhus/search?"
-            "q=platformname:Sentinel-1 AND cloudcoverpercentage:5"
+            "https://scihub.copernicus.eu/dhus/search?q=platformname:Sentinel-1%20"
+            "AND%20producttype:GRD&rows=30&start=0&format=json"
+        )
+
+        with open("tests/data/sentinel.api.json", "r") as sentinel_data:
+            json_data = sentinel_data.read()
+
+        sentinel_data = json.loads(json_data)
+
+        responses.add(
+            responses.GET,
+            re.compile(r"https://scihub\.copernicus\.eu/dhus/.+"),
+            json=sentinel_data,
+            status=200,
+        )
+
+        query_builder = (
+            RequestQueryBuilder()
+            .platform_name(PlatformName.SENTINEL_1)
+            .and_()
+            .product_type(Sentinel1ProductType.GRD)
+        )
+        request = (
+            SentinelProductRequestBuilder()
+            .with_rows(30)
+            .with_username("test-user")
+            .with_password("test-password")
+            .with_query(query_builder)
+        )
+
+        result = query_sentinel_hub(request.build(), log_level=logging.DEBUG)
+
+        assert_that(result.success).is_true()
+        assert_that(result.data).is_equal_to(sentinel_data)
+        assert_that(responses.calls[0].request.url).is_equal_to(expected_url)
+
+    @responses.activate
+    def test_when_failure_response_from_sentinel_hub_then_returns_failure(self):
+        expected_url = (
+            "https://scihub.copernicus.eu/dhus/search?q=platformname:Sentinel-1"
+            "%20AND%20producttype:GRD%20AND%20NOT%20(cloudcoverpercentage:"
+            "%5B5%20TO%2010%5D%20OR%20cloudcoverpercentage:%5B45%20TO%2050%5D)"
             "&rows=30&start=0&format=json"
         )
 
-        query_sentinel_hub(self.sentinel_product_request_with_query)
+        responses.add(
+            responses.GET,
+            re.compile(r"https://scihub\.copernicus\.eu/dhus/.+"),
+            body="<html></html>",
+            status=401,
+        )
+        query_builder = (
+            RequestQueryBuilder()
+            .platform_name(PlatformName.SENTINEL_1)
+            .and_()
+            .product_type(Sentinel1ProductType.GRD)
+            .and_()
+            .not_()
+            .group_(
+                RequestQueryBuilder()
+                .cloud_cover_percentage("5 TO 10")
+                .or_()
+                .cloud_cover_percentage("[45 TO 50]")
+            )
+        )
+        request = (
+            SentinelProductRequestBuilder()
+            .with_rows(30)
+            .with_username("test-user")
+            .with_password("test-password")
+            .with_query(query_builder)
+        )
 
-        requests_call_args = self.requests_mock.get.call_args.args
+        result = query_sentinel_hub(request.build(), log_level=logging.DEBUG)
 
-        assert_that(requests_call_args[0]).is_equal_to(expected_url)
+        assert_that(result.success).is_false()
+        assert_that(result.status_code).is_equal_to(401)
+        assert_that(responses.calls[0].request.url).is_equal_to(expected_url)
+
+    @responses.activate
+    def test_when_error_when_calling_api_then_returns_error_result(self):
+        error = requests.ConnectionError()
+
+        responses.add(
+            responses.GET,
+            re.compile(r"https://scihub\.copernicus\.eu/dhus/.+"),
+            body=error,
+        )
+        request = (
+            SentinelProductRequestBuilder()
+            .with_rows(30)
+            .with_username("test-user")
+            .with_password("test-password")
+        )
+
+        result = query_sentinel_hub(request.build(), log_level=logging.DEBUG)
+
+        assert_that(result.success).is_false()
+        assert_that(result.status_code).is_none()
+        assert_that(result.data).is_none()
+        assert_that(result.error).is_equal_to(error)

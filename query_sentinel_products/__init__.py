@@ -4,7 +4,11 @@ __author__ = """UK Hydrographic Office"""
 __email__ = "datascienceandengineering@ukho.gov.uk"
 __version__ = "0.1.0"
 
-from .query_sentinel_products import query_sentinel_hub  # noqa: F401
+from .main import query_sentinel_hub  # noqa: F401
+from .query_sentinel_products_response import (  # noqa: F401
+    QuerySentinelProductsResponse,
+    QuerySentinelProductsResponseTuple,
+)
 from .request.model import (  # noqa: F401
     OrbitDirection,
     PlatformName,

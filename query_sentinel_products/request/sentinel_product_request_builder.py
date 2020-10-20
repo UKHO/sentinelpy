@@ -110,7 +110,7 @@ class SentinelProductRequestBuilder:
             request::SentinelProductRequest
                 Request with the values that have been provided to the builder
 
-        Side Effects:
+        Raises:
             ValueError - Username or Password not supplied
         """
         self.__assert_mandatory_fields_present()
