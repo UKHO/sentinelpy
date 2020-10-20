@@ -30,7 +30,6 @@ readme = "README.md"
 [tool.poetry.dependencies]
 mypy = "^0.790"
 python = "^3.6"
-boto3 = "^1.15.16"
 requests = "^2.24.0"
 
 [tool.poetry.dev-dependencies]
