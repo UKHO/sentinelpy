@@ -8,13 +8,6 @@ class SentinelProductRequestBuilder:
     """ Builder class to build Sentinel Product Requests
     """
 
-    __username: Optional[str]
-    __password: Optional[str]
-    __query: Union[RequestQueryBuilder, str]
-    __order_by: Optional[str]
-    __rows: int
-    __start: int
-
     def __init__(
         self,
         default_query: str = "*",
@@ -22,12 +15,12 @@ class SentinelProductRequestBuilder:
         default_order_by: Optional[str] = None,
         default_start: int = 0,
     ):
-        self.__username = None
-        self.__password = None
-        self.__query = default_query
-        self.__rows = default_rows
-        self.__order_by = default_order_by
-        self.__start = default_start
+        self.__username: Optional[str] = None
+        self.__password: Optional[str] = None
+        self.__order_by: Optional[str] = default_order_by
+        self.__query: Union[str, RequestQueryBuilder] = default_query
+        self.__rows: int = default_rows
+        self.__start: int = default_start
 
     def with_username(self, username: str) -> "SentinelProductRequestBuilder":
         """ Sets the Sentinel Hub username

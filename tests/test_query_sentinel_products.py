@@ -26,7 +26,6 @@ class TestQuerySentinelProducts:
             "AND%20producttype:GRD&rows=30&start=0&format=json"
         )
 
-
         with open(f"{DATA_DIR}/sentinel.api.json", "r") as sentinel_data:
             json_data = sentinel_data.read()
 
