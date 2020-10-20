@@ -2,20 +2,17 @@ from unittest.mock import Mock, call, patch
 
 from assertpy import assert_that
 
-from query_sentinel_products.request import (
+from query_sentinel_products import (
     OrbitDirection,
     PlatformName,
     RequestQueryBuilder,
     range_value,
-)
-from query_sentinel_products.request.model import (
     PolarisationMode,
     SensorOperationalMode,
     Sentinel1ProductType,
     SwathIdentifier,
     Timeliness,
 )
-
 
 class TestRequestQueryBuilder:
     def test_when_range_value_called_with_strings_supplied_then_creates_value_correctly(

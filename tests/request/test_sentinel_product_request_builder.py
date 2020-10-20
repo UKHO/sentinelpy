@@ -2,10 +2,10 @@ from unittest.mock import Mock
 
 from assertpy import assert_that
 
-from query_sentinel_products.request import (
+from query_sentinel_products import (
     RequestQueryBuilder,
     SentinelProductRequest,
-    SentinelProductRequestBuilder,
+    SentinelProductRequestBuilder, PlatformName,
 )
 
 
@@ -90,7 +90,8 @@ class TestSentinelProductRequestBuilder:
         assert_that(result).is_equal_to(expected_request)
 
     def test_when_query_is_query_builder_then_calls_build_when_building_request(self):
-        query_builder = Mock(wraps=RequestQueryBuilder())
+        query_builder = RequestQueryBuilder().platform_name(PlatformName.SENTINEL_1)
+
         request_builder = (
             SentinelProductRequestBuilder()
             .with_query(query_builder)
@@ -100,6 +101,6 @@ class TestSentinelProductRequestBuilder:
             .with_password("password")
         )
 
-        request_builder.build()
+        result = request_builder.build()
 
-        query_builder.build.assert_called_once()
+        assert_that(result.query).is_equal_to("platformname:Sentinel-1")
