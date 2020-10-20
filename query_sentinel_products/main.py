@@ -16,7 +16,7 @@ __SENTINEL_HUB_URL_PATTERN = (
 def query_sentinel_hub(
     sentinel_product_request: SentinelProductRequest, *, log_level: int = logging.INFO
 ) -> QuerySentinelProductsResponse:
-    logger = logging.getLogger()
+    logger = logging.getLogger(__name__)
     logger.setLevel(log_level)
     try:
         response = __call_api(sentinel_product_request, logger)
