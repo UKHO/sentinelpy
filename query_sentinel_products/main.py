@@ -16,6 +16,19 @@ __SENTINEL_HUB_URL_PATTERN = (
 def query_sentinel_hub(
     sentinel_product_request: SentinelProductRequest, *, log_level: int = logging.INFO
 ) -> QuerySentinelProductsResponse:
+    """Queries the Sentinel Hub for the information in the request.
+
+    Args:
+        sentinel_product_request::SentinelProductRequest
+            Details regarding the request
+
+        log_level::int
+            Level of logs to print
+
+    Returns:
+        result::QuerySentinelProductsResponse
+            Result of the query
+    """
     logger = logging.getLogger(__name__)
     logger.setLevel(log_level)
     try:

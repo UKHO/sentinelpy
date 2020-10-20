@@ -42,6 +42,51 @@ Represents the result from the Sentinel Hub API
 
 Can be interacted with as an object or in a more functional style using
 the 'on' methods.
+
+#### Properties
+
+* `status_code` (_Optional[int]_)
+
+    The HTTP Status code representing the outcome of the query
+
+* `data` (_Optional[Dict[str, Any]]_)
+
+    The resulting data from the Sentinel Hub
+
+* `error` (_Optional[BaseException]_)
+
+    An error object if there was an error or exception raised
+
+* `success` (_bool_)
+
+    Whether or not the query was successful
+
+* `tuple` (QuerySentinelProductsResponseTuple)
+
+    Converts the result into a named tuple so that it can be
+    easily consumed.
+
+#### Methods
+
+<details>
+<summary>Method detail</summary>
+
+<p>
+
+##### `raise_error`
+
+If encountered an error raise so not
+
+Situations this would be useful:
+
+- Prevent exceptions being swallowed
+- You prefer to handle exception rather than checking if value is None
+
+**Returns**: _None_
+
+**Raises**: Error that was encountered when querying the API
+</p>
+</details>
 </p>
 </details>
 
