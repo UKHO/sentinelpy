@@ -305,7 +305,7 @@ all lowercase to adhere to Python conventions.
 
 <p>
 
-###### `build`
+##### `build`
 
 Creates the value for query/`q` using the supplied values. If two non-operators supplied in order without an operator (i.e. `and_`, `or_`, or `not_`)
 defaults to `and_` operator.
