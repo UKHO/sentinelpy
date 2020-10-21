@@ -9,7 +9,7 @@ Queries ESA Sentinel APIs for products
 * Free software: MIT license
 
 # Usage
-## `query_sentinel_hub`.
+## `query_sentinel_hub`
 
 ```python
 import logging
@@ -109,8 +109,6 @@ Builder resposible for creating _[SentinelProductRequest](#SentinelProductReques
 
 As a minimum, the username and password for the Sentinel Hub should be supplied.
 
-#### Constructor
-
 <details>
 <summary><strong>Constructor details</strong></summary>
 
@@ -122,8 +120,6 @@ As a minimum, the username and password for the Sentinel Hub should be supplied.
 * **`default_start`** (_int_): Default value for start, _defaults to `0`_
 </p>
 </details>
-
-#### Methods
 
 <details>
 <summary><strong>Method details</strong></summary>
@@ -227,8 +223,6 @@ Sets the start value
 </p>
 </details>
 
-#### Examples
-
 <details>
 <summary><strong>Example usage</strong></summary>
 
@@ -299,7 +293,6 @@ A builder utility to build values for queries. [Refer to the Sentinel Hub API do
 map to search keywords/operators described in the former documentation. The keywords use snake case rather than
 all lowercase to adhere to Python conventions.
 
-#### Methods
 <details>
 <summary><strong>Method details</strong></summary>
 
@@ -587,7 +580,7 @@ Sets a filter on the orbit direction for the oldest data in the product
 
 **Parameter**:
 
-* `orbit_direction` (_OrbitDirection_)
+* `orbit_direction` (_[OrbitDirection](#Enumerations)_)
 
     Direction that the query is interested in
 
@@ -619,7 +612,7 @@ Sets a filter on the platform name
 
 **Parameter**:
 
-* `platform_name` (_PlatformName_)
+* `platform_name` (_[PlatformName](#Enumerations)_)
 
     The platform name to filter the results by
 
@@ -633,7 +626,7 @@ Sets a filter on polarisation mode.
 
 **Parameter**:
 
-* `polarisation_mode` (_PolarisationMode_)
+* `polarisation_mode` (_[PolarisationMode](#Enumerations)_)
 
 
     Specified value for polarisation_mode
@@ -648,7 +641,7 @@ Sets a filter on product type. Note the valid combinations with `platform_name`
 
 **Parameter**:
 
-* `product_type` (_`Sentinel1ProductType`_ or _`Sentinel2ProductType`_ or _`Sentinel3ProductType`_ or _`Sentinel5PProductType`_)
+* `product_type` [(_`Sentinel1ProductType`_ or _`Sentinel2ProductType`_ or _`Sentinel3ProductType`_ or _`Sentinel5PProductType`_)](#Enumerations)
 
     Specified value for product type to filter the results on
 
@@ -679,7 +672,7 @@ Set filter on sensor operational mode
 
 **Parameter**:
 
-* `sensor_operational_mode` (_SensorOperationalMode_)
+* `sensor_operational_mode` (_[SensorOperationalMode](#Enumerations)_)
 
     The value to filter products on
 
@@ -693,7 +686,7 @@ Search all valid swath identifiers for the Sentinel-1 SAR instrument. The S1-S6 
 
 **Parameter**:
 
-* `swath_identifier` (_SwathIdentifier_)
+* `swath_identifier` (_[SwathIdentifier](#Enumerations)_)
 
     Swath Identifier to filter products with
 
@@ -707,7 +700,7 @@ Filter sentinel products on timeliness
 
 **Parameter**:
 
-* `timeliness` (_Timeliness_)
+* `timeliness` (_[Timeliness_](#Enumerations))
 
     Value of timeliness that the query is interested in
 
@@ -715,7 +708,6 @@ Filter sentinel products on timeliness
 </p>
 </details>
 
-### Example usage
 <details>
 <summary><strong>Example</strong></summary>
 
@@ -808,8 +800,6 @@ Represents the result from the Sentinel Hub API
 Can be interacted with as an object or in a more functional style using
 the 'on' methods (`on_success`/`on_failure`).
 
-#### Properties
-
 <details>
 <summary>Property Details</summary>
 
@@ -833,8 +823,6 @@ the 'on' methods (`on_success`/`on_failure`).
 </p>
 </details>
 
-
-#### Methods
 
 <details>
 <summary>Method details</summary>
@@ -886,8 +874,6 @@ was not successful.
     result
 
 **Returns**: `QuerySentinelProductsResponse` _self_
-
-### Examples
 
 <details>
 <summary><strong>Example</strong></summary>
@@ -943,7 +929,7 @@ failed_response.on_success(
 
 ---
 
-<details>
+<details id="Enumerations">
 <summary><strong>Enumerations</strong></summary>
 
 <p>
