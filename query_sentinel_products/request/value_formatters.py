@@ -1,7 +1,7 @@
 import re
 from typing import Union
 
-NO_BRACKETS_NUMERIC_RANGE_PATTERN = re.compile(r"^\d+\sTO\s\d+$")
+__NO_BRACKETS_NUMERIC_RANGE_PATTERN = re.compile(r"^\d+\sTO\s\d+$")
 
 
 def format_footprint(footprint: str) -> str:
@@ -41,6 +41,6 @@ def format_number_or_range(orbit_number: Union[str, int]) -> str:
 
     return (
         str(orbit_number)
-        if NO_BRACKETS_NUMERIC_RANGE_PATTERN.match(str(orbit_number)) is None
+        if __NO_BRACKETS_NUMERIC_RANGE_PATTERN.match(str(orbit_number)) is None
         else f"[{orbit_number}]"
     )
