@@ -75,7 +75,7 @@ class SentinelProductRequestBuilder:
         self.__rows = rows
         return self
 
-    def with_ordering(self, order_by: str) -> "SentinelProductRequestBuilder":
+    def with_order_by(self, order_by: str) -> "SentinelProductRequestBuilder":
         """ Sets the ordering/order_by value
         Args:
             order_by::str

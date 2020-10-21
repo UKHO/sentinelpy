@@ -44,16 +44,16 @@ print(result.error)
 
 **Positional arguments:**
 
-* `sentinel_product_request` (_[SentinelProductRequestBuilder](#SentinelProductRequestBuilder)_)
+* `sentinel_product_request` (_[SentinelProductRequest](#SentinelProductRequest)_)
 
-    Request object containing the details of the query. You can use the _[SentinelProductRequestBuilder](#SentinelProductRequestBuilder)_ to
+    Request object containing the details of the query. You should use the _[SentinelProductRequestBuilder](#SentinelProductRequestBuilder)_ to
     construct
 
 **Keyword arguments:**
 
 * `log_level` (_int_)
 
-    Level for which to log at use `logging` to define correct level
+    Level for which to log at use `logging` to define correct level, defaults to 'INFO'.
 
 **Returns:** _[QuerySentinelProductsResponse](#QuerySentinelProductsResponse)_ object
 
@@ -65,7 +65,7 @@ print(result.error)
 
 ### range_value (`function`)
 
-A helper function for defining range values for Queries using the `RequestQueryBuilder`
+A helper function for defining range values for queries using the `RequestQueryBuilder`
 
 **Parameters**:
 
@@ -146,7 +146,7 @@ Sets the Sentinel Hub username
 
     The username for Sentinel Hub API
 
-**Returns**: _SentinelProductRequestBuilder_ Builder object with username supplied
+**Returns**: _SentinelProductRequestBuilder_ Builder object with `username` supplied
 
 ---
 
@@ -160,7 +160,7 @@ Sets the Sentinel Hub password
 
     The associated password for the user for the Sentinel Hub API
 
-**Returns**: _SentinelProductRequestBuilder_ Builder object with password supplied
+**Returns**: _SentinelProductRequestBuilder_ Builder object with `password` supplied
 
 ---
 
@@ -175,7 +175,7 @@ Sets the query (q) value
     The query to use to filter results. If it is a _RequestQueryBuilder_, then `build` will
     call `build` on the _RequestQueryBuilder_ before constructing the _[SentinelProductRequest](#SentinelProductRequest)_.
 
-**Returns**: _SentinelProductRequestBuilder_ Builder object with query supplied
+**Returns**: _SentinelProductRequestBuilder_ Builder object with `query` supplied
 
 ---
 
@@ -189,11 +189,11 @@ Sets the rows value
 
     The value for rows to return in each request
 
-**Returns**: _SentinelProductRequestBuilder_ Builder object with rows supplied
+**Returns**: _SentinelProductRequestBuilder_ Builder object with `rows` supplied
 
 ---
 
-##### `with_ordering`
+##### `with_order_by`
 
 Sets the order_by value
 
@@ -203,7 +203,7 @@ Sets the order_by value
 
     The value for order_by to return in each request
 
-**Returns**: _SentinelProductRequestBuilder_ Builder object with ordering supplied
+**Returns**: _SentinelProductRequestBuilder_ Builder object with `order_by` supplied
 
 ---
 
@@ -217,7 +217,7 @@ Sets the start value
 
     The value for start to return in each request
 
-**Returns**: _SentinelProductRequestBuilder_ Builder object with start supplied
+**Returns**: _SentinelProductRequestBuilder_ Builder object with `start` supplied
 
 
 </p>
@@ -230,10 +230,10 @@ Sets the start value
 
 ```python
 from query_sentinel_products import (
-	SentinelProductRequestBuilder,
+    SentinelProductRequestBuilder,
     SentinelProductRequest,
-	RequestQueryBuilder,
-	PlatformName,
+    RequestQueryBuilder,
+    PlatformName,
 )
 
 minimal = (
@@ -262,7 +262,7 @@ full = (
     )
     .with_start(15)
     .with_rows(15)
-    .with_ordering('ingestiondate desc')
+    .with_order_by('ingestiondate desc')
     .build()
 )
 
@@ -289,7 +289,7 @@ assert full == SentinelProductRequest(
 <p>
 
 ### RequestQueryBuilder (`class`)
-A builder utility to build values for queries. [Refer to the Sentinel Hub API documentation for more information about the values](https://scihub.copernicus.eu/twiki/do/view/SciHubUserGuide/FullTextSearch?redirectedfrom=SciHubUserGuide.3FullTextSearch). The methods of this class 
+A builder utility to build values for queries. [Refer to the Sentinel Hub API documentation for more information about the values](https://scihub.copernicus.eu/twiki/do/view/SciHubUserGuide/FullTextSearch?redirectedfrom=SciHubUserGuide.3FullTextSearch). The methods of this class
 map to search keywords/operators described in the former documentation. The keywords use snake case rather than
 all lowercase to adhere to Python conventions.
 
@@ -366,7 +366,7 @@ before.
 
 **Returns**: _RequestQueryBuilder_ self
 
-###### Example
+**Example**
 
 ```python
 from query_sentinel_products import (
@@ -558,7 +558,7 @@ is the lowest last orbit number and MAX is highest).
 
 Sets a filter on the last orbit number or range range of last orbit numbers (i.e `[MIN TO MAX]` whereby MIN
 is the lowest last orbit number and MAX is highest). Relative orbit number of the oldest line within the image
-data (the start of the product) and relative orbit number of the most recent line within the image data 
+data (the start of the product) and relative orbit number of the most recent line within the image data
 (the end of the product), respectively.
 
 **Parameter**:
@@ -590,8 +590,8 @@ Sets a filter on the orbit direction for the oldest data in the product
 
 ##### `orbit_number`
 
-Sets on a filter on the orbit number or range range of orbit numbers (i.e `[MIN TO MAX]` whereby MIN
-is the lowest last orbit number and MAX is highest).
+Sets a filter on the orbit number or range range of orbit numbers (i.e `[MIN TO MAX]` whereby MIN
+is the lowest orbit number and MAX is highest).
 
 **Parameter**:
 
@@ -700,7 +700,7 @@ Filter sentinel products on timeliness
 
 **Parameter**:
 
-* `timeliness` (_[Timeliness_](#Enumerations))
+* `timeliness` (_[Timeliness](#Enumerations)_)
 
     Value of timeliness that the query is interested in
 
@@ -801,7 +801,7 @@ Can be interacted with as an object or in a more functional style using
 the 'on' methods (`on_success`/`on_failure`).
 
 <details>
-<summary>Property Details</summary>
+<summary><strong>Property Details</strong></summary>
 
 <p>
 
@@ -825,13 +825,13 @@ the 'on' methods (`on_success`/`on_failure`).
 
 
 <details>
-<summary>Method details</summary>
+<summary><strong>Method details</strong></summary>
 
 <p>
 
 ##### `raise_error`
 
-If encountered an error raise so not
+If encountered an error raise error encountered. Otherwise do nothing
 
 Situations this would be useful:
 
@@ -934,7 +934,7 @@ failed_response.on_success(
 
 <p>
 
-In order to simplify validation there are some Enumerations representing some of the types in the `RequestQueryBuilder`, each 
+In order to simplify validation there are some Enumerations representing some of the types in the `RequestQueryBuilder`, each
 valid option maps to a value defined by the API. [Refer to the Sentinel Hub API documentation for more information about the values](https://scihub.copernicus.eu/twiki/do/view/SciHubUserGuide/FullTextSearch?redirectedfrom=SciHubUserGuide.3FullTextSearch)
 
 The enumerations are as follows:
@@ -957,6 +957,7 @@ The enumerations are as follows:
 # Features
 
 * Queries the Sentinel Hub for products
+* Define your requests using the `RequestQueryBuilder` and `SentinelProductRequestBuilder` objects
 
 # Credits
 

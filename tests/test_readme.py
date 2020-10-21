@@ -96,7 +96,7 @@ class TestReadme:
             .with_query(RequestQueryBuilder().platform_name(PlatformName.SENTINEL_1))
             .with_start(15)
             .with_rows(15)
-            .with_ordering("ingestiondate desc")
+            .with_order_by("ingestiondate desc")
             .build()
         )
 
