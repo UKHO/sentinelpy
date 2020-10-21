@@ -1,4 +1,4 @@
-from typing import Any, Callable, Dict, NamedTuple, Optional, Tuple
+from typing import Any, Callable, Dict, NamedTuple, Optional
 
 
 class QuerySentinelProductsResponse(NamedTuple):

@@ -887,23 +887,23 @@ from query_sentinel_products import QuerySentinelProductsResponse
 # Successful response:
 successful_response = QuerySentinelProductsResponse(200, {})
 
-assert successful_response.success == True
+assert successful_response.success
 assert successful_response.status_code == 200
 assert successful_response.body == {}
-assert successful_response.error == None
+assert successful_response.error is None
 
 # Failed response:
 failed_response = QuerySentinelProductsResponse(400, {})
-assert failed_response.success == False
+assert not failed_response.success
 assert failed_response.status_code == 400
 assert failed_response.body == {}
-assert failed_response.error == None
+assert failed_response.error is None
 
 # Erroneous response
 erroneous_response = QuerySentinelProductsResponse(None, None, IOError())
-assert erroneous_response.success == False
-assert erroneous_response.status_code == None
-assert erroneous_response.body == None
+assert not erroneous_response.success
+assert erroneous_response.status_code is None
+assert erroneous_response.body is None
 assert erroneous_response.error == IOError()
 
 # Using the functional style methods

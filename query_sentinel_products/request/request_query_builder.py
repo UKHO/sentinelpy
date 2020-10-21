@@ -153,7 +153,7 @@ class RequestQueryBuilder:
     def end_position(
         self, end_position_start: str, end_position_end: str
     ) -> "RequestQueryBuilder":
-        """Set a filter on the range for endposition (that is Sensing Stop Time) 
+        """Set a filter on the range for endposition (that is Sensing Stop Time)
         that the query is interested in.
 
         Args:
@@ -208,7 +208,7 @@ class RequestQueryBuilder:
         )
 
     def collection(self, collection: str) -> "RequestQueryBuilder":
-        """Sets a filter on the collection. Used to specify the name 
+        """Sets a filter on the collection. Used to specify the name
         of a predefined collection of products
 
         Args:
@@ -243,8 +243,8 @@ class RequestQueryBuilder:
         )
 
     def footprint(self, geographic_type: str) -> "RequestQueryBuilder":
-        """Sets a filter on geographic area that the query is interested in. Can use 
-        either a simple bounding box described as a WKT Polygon or a point described 
+        """Sets a filter on geographic area that the query is interested in. Can use
+        either a simple bounding box described as a WKT Polygon or a point described
         by a `Latitude` `Longitude` pair. Refer to the Sentinel Hub documentation for
         in depth information about footprint.
 
@@ -336,10 +336,10 @@ class RequestQueryBuilder:
     def last_relative_orbit_number(
         self, orbit_number: Union[int, str]
     ) -> "RequestQueryBuilder":
-        """Sets a filter on the last orbit number or range range of last orbit 
-        numbers (i.e `[MIN TO MAX]` whereby MIN is the lowest last orbit number 
+        """Sets a filter on the last orbit number or range range of last orbit
+        numbers (i.e `[MIN TO MAX]` whereby MIN is the lowest last orbit number
         and MAX is highest). Relative orbit number of the oldest line within the image
-        data (the start of the product) and relative orbit number of the most recent 
+        data (the start of the product) and relative orbit number of the most recent
         line within the image data (the end of the product), respectively.
 
         Args:

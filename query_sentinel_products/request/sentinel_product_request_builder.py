@@ -1,4 +1,4 @@
-from typing import Optional, Union
+from typing import Optional, Tuple, Union
 
 from .model import SentinelProductRequest
 from .request_query_builder import RequestQueryBuilder
@@ -109,7 +109,6 @@ class SentinelProductRequestBuilder:
         Raises:
             ValueError - Username or Password not supplied
         """
-        self.__assert_mandatory_fields_present()
         query = (
             self.__query
             if not isinstance(self.__query, RequestQueryBuilder)
@@ -118,8 +117,7 @@ class SentinelProductRequestBuilder:
         rows = self.__rows
         order_by = self.__order_by
         start = self.__start
-        username = self.__username
-        password = self.__password
+        username, password = self.__assert_mandatory_fields_present()
         return SentinelProductRequest(
             query=query,
             rows=rows,
@@ -129,12 +127,14 @@ class SentinelProductRequestBuilder:
             password=password,
         )
 
-    def __assert_mandatory_fields_present(self):
-        errors = ""
-        if self.__username is None:
-            errors = "username is required; "
-        if self.__password is None:
-            errors += "password is required; "
+    def __assert_mandatory_fields_present(self) -> Tuple[str, str]:
+        username = self.__username if self.__username else ""
+        password = self.__password if self.__password else ""
+
+        errors = "username is required;" if not username else ""
+        errors = f"{errors} password is required;" if not password else errors
 
         if errors:
             raise ValueError(errors.strip())
+
+        return username, password

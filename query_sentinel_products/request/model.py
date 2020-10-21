@@ -1,6 +1,5 @@
-from collections import namedtuple
 from enum import Enum
-from typing import Union, NamedTuple, Optional
+from typing import NamedTuple, Optional, Union
 
 
 class SentinelProductRequest(NamedTuple):
