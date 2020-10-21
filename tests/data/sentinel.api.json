@@ -1,0 +1,1414 @@
+{
+    "feed": {
+        "xmlns:opensearch": "http://a9.com/-/spec/opensearch/1.1/",
+        "xmlns": "http://www.w3.org/2005/Atom",
+        "title": "Sentinels Scientific Data Hub search results for: *",
+        "subtitle": "Displaying 0 to 9 of 31956622 total results. Request done in 0 seconds.",
+        "updated": "2020-10-20T13:24:05.549Z",
+        "author": {
+            "name": "Sentinels Scientific Data Hub"
+        },
+        "id": "https://scihub.copernicus.eu/dhus/search?q=*",
+        "opensearch:totalResults": "31956622",
+        "opensearch:startIndex": "0",
+        "opensearch:itemsPerPage": "10",
+        "opensearch:Query": {
+            "role": "request",
+            "searchTerms": "*",
+            "startPage": "1"
+        },
+        "link": [
+            {
+                "rel": "self",
+                "type": "application/atom+xml",
+                "href": "https://scihub.copernicus.eu/dhus/search?q=*&start=0&rows=10"
+            },
+            {
+                "rel": "first",
+                "type": "application/atom+xml",
+                "href": "https://scihub.copernicus.eu/dhus/search?q=*&start=0&rows=10"
+            },
+            {
+                "rel": "next",
+                "type": "application/atom+xml",
+                "href": "https://scihub.copernicus.eu/dhus/search?q=*&start=10&rows=10"
+            },
+            {
+                "rel": "last",
+                "type": "application/atom+xml",
+                "href": "https://scihub.copernicus.eu/dhus/search?q=*&start=31956621&rows=10"
+            },
+            {
+                "rel": "search",
+                "type": "application/opensearchdescription+xml",
+                "href": "opensearch_description.xml"
+            }
+        ],
+        "entry": [
+            {
+                "title": "S2B_MSIL1C_20201020T082909_N0209_R021_T36QUL_20201020T093332",
+                "link": [
+                    {
+                        "href": "https://scihub.copernicus.eu/dhus/odata/v1/Products('cf604f89-aa40-48aa-9814-5b6823a49068')/$value"
+                    },
+                    {
+                        "rel": "alternative",
+                        "href": "https://scihub.copernicus.eu/dhus/odata/v1/Products('cf604f89-aa40-48aa-9814-5b6823a49068')/"
+                    },
+                    {
+                        "rel": "icon",
+                        "href": "https://scihub.copernicus.eu/dhus/odata/v1/Products('cf604f89-aa40-48aa-9814-5b6823a49068')/Products('Quicklook')/$value"
+                    }
+                ],
+                "id": "cf604f89-aa40-48aa-9814-5b6823a49068",
+                "summary": "Date: 2020-10-20T08:29:09.024Z, Instrument: MSI, Mode: , Satellite: Sentinel-2, Size: 446.80 MB",
+                "date": [
+                    {
+                        "name": "datatakesensingstart",
+                        "content": "2020-10-20T08:29:09.024Z"
+                    },
+                    {
+                        "name": "beginposition",
+                        "content": "2020-10-20T08:29:09.024Z"
+                    },
+                    {
+                        "name": "endposition",
+                        "content": "2020-10-20T08:29:09.024Z"
+                    },
+                    {
+                        "name": "ingestiondate",
+                        "content": "2020-10-20T13:21:03.195Z"
+                    }
+                ],
+                "int": [
+                    {
+                        "name": "orbitnumber",
+                        "content": "18923"
+                    },
+                    {
+                        "name": "relativeorbitnumber",
+                        "content": "21"
+                    }
+                ],
+                "double": {
+                    "name": "cloudcoverpercentage",
+                    "content": "0.0"
+                },
+                "str": [
+                    {
+                        "name": "sensoroperationalmode",
+                        "content": "INS-NOBS"
+                    },
+                    {
+                        "name": "gmlfootprint",
+                        "content": "<gml:Polygon srsName=\"http://www.opengis.net/gml/srs/epsg.xml#4326\" xmlns:gml=\"http://www.opengis.net/gml\">\n   <gml:outerBoundaryIs>\n      <gml:LinearRing>\n         <gml:coordinates>23.50514374975439,31.79796024193489 23.36371295035314,31.761584029048343 23.21572658940183,31.72311092216552 23.06776964606591,31.68480187085144 22.919811396084608,31.64652024618463 22.88129801326781,31.636606384927514 22.77121080085973,31.60819531883496 22.62329570430328,31.570077149291105 22.511201382925094,31.54129086320495 22.50694723685017,31.055685315169388 23.498241253675907,31.04142756505366 23.50514374975439,31.79796024193489</gml:coordinates>\n      </gml:LinearRing>\n   </gml:outerBoundaryIs>\n</gml:Polygon>"
+                    },
+                    {
+                        "name": "footprint",
+                        "content": "MULTIPOLYGON (((31.055685315169388 22.50694723685017, 31.54129086320495 22.511201382925094, 31.570077149291105 22.62329570430328, 31.60819531883496 22.77121080085973, 31.636606384927514 22.88129801326781, 31.64652024618463 22.919811396084608, 31.68480187085144 23.06776964606591, 31.72311092216552 23.21572658940183, 31.761584029048343 23.36371295035314, 31.79796024193489 23.50514374975439, 31.04142756505366 23.498241253675907, 31.055685315169388 22.50694723685017)))"
+                    },
+                    {
+                        "name": "level1cpdiidentifier",
+                        "content": "S2B_OPER_MSI_L1C_TL_EPAE_20201020T093332_A018923_T36QUL_N02.09"
+                    },
+                    {
+                        "name": "tileid",
+                        "content": "36QUL"
+                    },
+                    {
+                        "name": "hv_order_tileid",
+                        "content": "QL36U"
+                    },
+                    {
+                        "name": "format",
+                        "content": "SAFE"
+                    },
+                    {
+                        "name": "processingbaseline",
+                        "content": "02.09"
+                    },
+                    {
+                        "name": "platformname",
+                        "content": "Sentinel-2"
+                    },
+                    {
+                        "name": "filename",
+                        "content": "S2B_MSIL1C_20201020T082909_N0209_R021_T36QUL_20201020T093332.SAFE"
+                    },
+                    {
+                        "name": "instrumentname",
+                        "content": "Multi-Spectral Instrument"
+                    },
+                    {
+                        "name": "instrumentshortname",
+                        "content": "MSI"
+                    },
+                    {
+                        "name": "size",
+                        "content": "446.80 MB"
+                    },
+                    {
+                        "name": "s2datatakeid",
+                        "content": "GS2B_20201020T082909_018923_N02.09"
+                    },
+                    {
+                        "name": "producttype",
+                        "content": "S2MSI1C"
+                    },
+                    {
+                        "name": "platformidentifier",
+                        "content": "2017-013A"
+                    },
+                    {
+                        "name": "orbitdirection",
+                        "content": "DESCENDING"
+                    },
+                    {
+                        "name": "platformserialidentifier",
+                        "content": "Sentinel-2B"
+                    },
+                    {
+                        "name": "processinglevel",
+                        "content": "Level-1C"
+                    },
+                    {
+                        "name": "identifier",
+                        "content": "S2B_MSIL1C_20201020T082909_N0209_R021_T36QUL_20201020T093332"
+                    },
+                    {
+                        "name": "uuid",
+                        "content": "cf604f89-aa40-48aa-9814-5b6823a49068"
+                    }
+                ]
+            },
+            {
+                "title": "S2B_MSIL1C_20201020T082909_N0209_R021_T36QUK_20201020T093332",
+                "link": [
+                    {
+                        "href": "https://scihub.copernicus.eu/dhus/odata/v1/Products('6fbea821-b04f-4808-94e0-5c6c789576bd')/$value"
+                    },
+                    {
+                        "rel": "alternative",
+                        "href": "https://scihub.copernicus.eu/dhus/odata/v1/Products('6fbea821-b04f-4808-94e0-5c6c789576bd')/"
+                    },
+                    {
+                        "rel": "icon",
+                        "href": "https://scihub.copernicus.eu/dhus/odata/v1/Products('6fbea821-b04f-4808-94e0-5c6c789576bd')/Products('Quicklook')/$value"
+                    }
+                ],
+                "id": "6fbea821-b04f-4808-94e0-5c6c789576bd",
+                "summary": "Date: 2020-10-20T08:29:09.024Z, Instrument: MSI, Mode: , Satellite: Sentinel-2, Size: 276.70 MB",
+                "date": [
+                    {
+                        "name": "datatakesensingstart",
+                        "content": "2020-10-20T08:29:09.024Z"
+                    },
+                    {
+                        "name": "beginposition",
+                        "content": "2020-10-20T08:29:09.024Z"
+                    },
+                    {
+                        "name": "endposition",
+                        "content": "2020-10-20T08:29:09.024Z"
+                    },
+                    {
+                        "name": "ingestiondate",
+                        "content": "2020-10-20T13:21:02.418Z"
+                    }
+                ],
+                "int": [
+                    {
+                        "name": "orbitnumber",
+                        "content": "18923"
+                    },
+                    {
+                        "name": "relativeorbitnumber",
+                        "content": "21"
+                    }
+                ],
+                "double": {
+                    "name": "cloudcoverpercentage",
+                    "content": "0.0"
+                },
+                "str": [
+                    {
+                        "name": "sensoroperationalmode",
+                        "content": "INS-NOBS"
+                    },
+                    {
+                        "name": "gmlfootprint",
+                        "content": "<gml:Polygon srsName=\"http://www.opengis.net/gml/srs/epsg.xml#4326\" xmlns:gml=\"http://www.opengis.net/gml\">\n   <gml:outerBoundaryIs>\n      <gml:LinearRing>\n         <gml:coordinates>22.599728875170616,31.56402508994309 22.47538785359144,31.53209380051276 22.32744087250591,31.49408288852125 22.179404711760533,31.45617014037324 22.14058125992789,31.44620236975769 22.03196658798652,31.41823579362425 21.88389926640501,31.380307566040848 21.73582221600244,31.34245358958729 21.60586816032049,31.309201742647183 21.603835506172878,31.067996386118097 22.595248168848308,31.054447241731598 22.599728875170616,31.56402508994309</gml:coordinates>\n      </gml:LinearRing>\n   </gml:outerBoundaryIs>\n</gml:Polygon>"
+                    },
+                    {
+                        "name": "footprint",
+                        "content": "MULTIPOLYGON (((31.067996386118097 21.603835506172878, 31.309201742647183 21.60586816032049, 31.34245358958729 21.73582221600244, 31.380307566040848 21.88389926640501, 31.41823579362425 22.03196658798652, 31.44620236975769 22.14058125992789, 31.45617014037324 22.179404711760533, 31.49408288852125 22.32744087250591, 31.53209380051276 22.47538785359144, 31.56402508994309 22.599728875170616, 31.054447241731598 22.595248168848308, 31.067996386118097 21.603835506172878)))"
+                    },
+                    {
+                        "name": "level1cpdiidentifier",
+                        "content": "S2B_OPER_MSI_L1C_TL_EPAE_20201020T093332_A018923_T36QUK_N02.09"
+                    },
+                    {
+                        "name": "tileid",
+                        "content": "36QUK"
+                    },
+                    {
+                        "name": "hv_order_tileid",
+                        "content": "QK36U"
+                    },
+                    {
+                        "name": "format",
+                        "content": "SAFE"
+                    },
+                    {
+                        "name": "processingbaseline",
+                        "content": "02.09"
+                    },
+                    {
+                        "name": "platformname",
+                        "content": "Sentinel-2"
+                    },
+                    {
+                        "name": "filename",
+                        "content": "S2B_MSIL1C_20201020T082909_N0209_R021_T36QUK_20201020T093332.SAFE"
+                    },
+                    {
+                        "name": "instrumentname",
+                        "content": "Multi-Spectral Instrument"
+                    },
+                    {
+                        "name": "instrumentshortname",
+                        "content": "MSI"
+                    },
+                    {
+                        "name": "size",
+                        "content": "276.70 MB"
+                    },
+                    {
+                        "name": "s2datatakeid",
+                        "content": "GS2B_20201020T082909_018923_N02.09"
+                    },
+                    {
+                        "name": "producttype",
+                        "content": "S2MSI1C"
+                    },
+                    {
+                        "name": "platformidentifier",
+                        "content": "2017-013A"
+                    },
+                    {
+                        "name": "orbitdirection",
+                        "content": "DESCENDING"
+                    },
+                    {
+                        "name": "platformserialidentifier",
+                        "content": "Sentinel-2B"
+                    },
+                    {
+                        "name": "processinglevel",
+                        "content": "Level-1C"
+                    },
+                    {
+                        "name": "identifier",
+                        "content": "S2B_MSIL1C_20201020T082909_N0209_R021_T36QUK_20201020T093332"
+                    },
+                    {
+                        "name": "uuid",
+                        "content": "6fbea821-b04f-4808-94e0-5c6c789576bd"
+                    }
+                ]
+            },
+            {
+                "title": "S1A_IW_GRDH_1SDV_20201020T090424_20201020T090449_034877_0410FB_C455",
+                "link": [
+                    {
+                        "href": "https://scihub.copernicus.eu/dhus/odata/v1/Products('a0ac0971-080d-49d9-bdac-00a6e35c9c03')/$value"
+                    },
+                    {
+                        "rel": "alternative",
+                        "href": "https://scihub.copernicus.eu/dhus/odata/v1/Products('a0ac0971-080d-49d9-bdac-00a6e35c9c03')/"
+                    },
+                    {
+                        "rel": "icon",
+                        "href": "https://scihub.copernicus.eu/dhus/odata/v1/Products('a0ac0971-080d-49d9-bdac-00a6e35c9c03')/Products('Quicklook')/$value"
+                    }
+                ],
+                "id": "a0ac0971-080d-49d9-bdac-00a6e35c9c03",
+                "summary": "Date: 2020-10-20T09:04:24.416Z, Instrument: SAR-C SAR, Mode: VV VH, Satellite: Sentinel-1, Size: 1.59 GB",
+                "date": [
+                    {
+                        "name": "beginposition",
+                        "content": "2020-10-20T09:04:24.416Z"
+                    },
+                    {
+                        "name": "endposition",
+                        "content": "2020-10-20T09:04:49.415Z"
+                    },
+                    {
+                        "name": "ingestiondate",
+                        "content": "2020-10-20T13:20:41.495Z"
+                    }
+                ],
+                "int": [
+                    {
+                        "name": "missiondatatakeid",
+                        "content": "266491"
+                    },
+                    {
+                        "name": "orbitnumber",
+                        "content": "34877"
+                    },
+                    {
+                        "name": "lastorbitnumber",
+                        "content": "34877"
+                    },
+                    {
+                        "name": "relativeorbitnumber",
+                        "content": "155"
+                    },
+                    {
+                        "name": "lastrelativeorbitnumber",
+                        "content": "155"
+                    },
+                    {
+                        "name": "slicenumber",
+                        "content": "5"
+                    }
+                ],
+                "str": [
+                    {
+                        "name": "sensoroperationalmode",
+                        "content": "IW"
+                    },
+                    {
+                        "name": "swathidentifier",
+                        "content": "IW"
+                    },
+                    {
+                        "name": "orbitdirection",
+                        "content": "ASCENDING"
+                    },
+                    {
+                        "name": "producttype",
+                        "content": "GRD"
+                    },
+                    {
+                        "name": "timeliness",
+                        "content": "Fast-24h"
+                    },
+                    {
+                        "name": "platformname",
+                        "content": "Sentinel-1"
+                    },
+                    {
+                        "name": "platformidentifier",
+                        "content": "2014-016A"
+                    },
+                    {
+                        "name": "instrumentname",
+                        "content": "Synthetic Aperture Radar (C-band)"
+                    },
+                    {
+                        "name": "instrumentshortname",
+                        "content": "SAR-C SAR"
+                    },
+                    {
+                        "name": "filename",
+                        "content": "S1A_IW_GRDH_1SDV_20201020T090424_20201020T090449_034877_0410FB_C455.SAFE"
+                    },
+                    {
+                        "name": "format",
+                        "content": "SAFE"
+                    },
+                    {
+                        "name": "productclass",
+                        "content": "S"
+                    },
+                    {
+                        "name": "polarisationmode",
+                        "content": "VV VH"
+                    },
+                    {
+                        "name": "acquisitiontype",
+                        "content": "NOMINAL"
+                    },
+                    {
+                        "name": "status",
+                        "content": "ARCHIVED"
+                    },
+                    {
+                        "name": "size",
+                        "content": "1.59 GB"
+                    },
+                    {
+                        "name": "gmlfootprint",
+                        "content": "<gml:Polygon srsName=\"http://www.opengis.net/gml/srs/epsg.xml#4326\" xmlns:gml=\"http://www.opengis.net/gml\">\n   <gml:outerBoundaryIs>\n      <gml:LinearRing>\n         <gml:coordinates>-2.748144,137.837524 -2.260637,140.067871 -3.760632,140.422607 -4.252884,138.190643 -2.748144,137.837524</gml:coordinates>\n      </gml:LinearRing>\n   </gml:outerBoundaryIs>\n</gml:Polygon>"
+                    },
+                    {
+                        "name": "footprint",
+                        "content": "MULTIPOLYGON (((138.190643 -4.252884, 140.422607 -3.760632, 140.067871 -2.260637, 137.837524 -2.748144, 138.190643 -4.252884)))"
+                    },
+                    {
+                        "name": "identifier",
+                        "content": "S1A_IW_GRDH_1SDV_20201020T090424_20201020T090449_034877_0410FB_C455"
+                    },
+                    {
+                        "name": "uuid",
+                        "content": "a0ac0971-080d-49d9-bdac-00a6e35c9c03"
+                    }
+                ]
+            },
+            {
+                "title": "S2B_MSIL1C_20201020T082909_N0209_R021_T36QUJ_20201020T093332",
+                "link": [
+                    {
+                        "href": "https://scihub.copernicus.eu/dhus/odata/v1/Products('10fb86db-c579-4415-9387-1dfed1dfe616')/$value"
+                    },
+                    {
+                        "rel": "alternative",
+                        "href": "https://scihub.copernicus.eu/dhus/odata/v1/Products('10fb86db-c579-4415-9387-1dfed1dfe616')/"
+                    },
+                    {
+                        "rel": "icon",
+                        "href": "https://scihub.copernicus.eu/dhus/odata/v1/Products('10fb86db-c579-4415-9387-1dfed1dfe616')/Products('Quicklook')/$value"
+                    }
+                ],
+                "id": "10fb86db-c579-4415-9387-1dfed1dfe616",
+                "summary": "Date: 2020-10-20T08:29:09.024Z, Instrument: MSI, Mode: , Satellite: Sentinel-2, Size: 128.31 MB",
+                "date": [
+                    {
+                        "name": "datatakesensingstart",
+                        "content": "2020-10-20T08:29:09.024Z"
+                    },
+                    {
+                        "name": "beginposition",
+                        "content": "2020-10-20T08:29:09.024Z"
+                    },
+                    {
+                        "name": "endposition",
+                        "content": "2020-10-20T08:29:09.024Z"
+                    },
+                    {
+                        "name": "ingestiondate",
+                        "content": "2020-10-20T13:20:36.86Z"
+                    }
+                ],
+                "int": [
+                    {
+                        "name": "orbitnumber",
+                        "content": "18923"
+                    },
+                    {
+                        "name": "relativeorbitnumber",
+                        "content": "21"
+                    }
+                ],
+                "double": {
+                    "name": "cloudcoverpercentage",
+                    "content": "0.0"
+                },
+                "str": [
+                    {
+                        "name": "sensoroperationalmode",
+                        "content": "INS-NOBS"
+                    },
+                    {
+                        "name": "gmlfootprint",
+                        "content": "<gml:Polygon srsName=\"http://www.opengis.net/gml/srs/epsg.xml#4326\" xmlns:gml=\"http://www.opengis.net/gml\">\n   <gml:outerBoundaryIs>\n      <gml:LinearRing>\n         <gml:coordinates>21.69438893656338,31.3318518960972 21.587773847898696,31.304571880931988 21.439736765209787,31.26687628410523 21.29171135193973,31.2292950293542 21.14365375981848,31.191880655898576 20.995600678401704,31.154537432456287 20.847629216211903,31.11718327183025 20.700622866573234,31.080100591346415 20.7006194715763,31.079681010884677 21.692146831688227,31.06682051971561 21.69438893656338,31.3318518960972</gml:coordinates>\n      </gml:LinearRing>\n   </gml:outerBoundaryIs>\n</gml:Polygon>"
+                    },
+                    {
+                        "name": "footprint",
+                        "content": "MULTIPOLYGON (((31.079681010884677 20.7006194715763, 31.080100591346415 20.700622866573234, 31.11718327183025 20.847629216211903, 31.154537432456287 20.995600678401704, 31.191880655898576 21.14365375981848, 31.2292950293542 21.29171135193973, 31.26687628410523 21.439736765209787, 31.304571880931988 21.587773847898696, 31.3318518960972 21.69438893656338, 31.06682051971561 21.692146831688227, 31.079681010884677 20.7006194715763)))"
+                    },
+                    {
+                        "name": "level1cpdiidentifier",
+                        "content": "S2B_OPER_MSI_L1C_TL_EPAE_20201020T093332_A018923_T36QUJ_N02.09"
+                    },
+                    {
+                        "name": "tileid",
+                        "content": "36QUJ"
+                    },
+                    {
+                        "name": "hv_order_tileid",
+                        "content": "QJ36U"
+                    },
+                    {
+                        "name": "format",
+                        "content": "SAFE"
+                    },
+                    {
+                        "name": "processingbaseline",
+                        "content": "02.09"
+                    },
+                    {
+                        "name": "platformname",
+                        "content": "Sentinel-2"
+                    },
+                    {
+                        "name": "filename",
+                        "content": "S2B_MSIL1C_20201020T082909_N0209_R021_T36QUJ_20201020T093332.SAFE"
+                    },
+                    {
+                        "name": "instrumentname",
+                        "content": "Multi-Spectral Instrument"
+                    },
+                    {
+                        "name": "instrumentshortname",
+                        "content": "MSI"
+                    },
+                    {
+                        "name": "size",
+                        "content": "128.31 MB"
+                    },
+                    {
+                        "name": "s2datatakeid",
+                        "content": "GS2B_20201020T082909_018923_N02.09"
+                    },
+                    {
+                        "name": "producttype",
+                        "content": "S2MSI1C"
+                    },
+                    {
+                        "name": "platformidentifier",
+                        "content": "2017-013A"
+                    },
+                    {
+                        "name": "orbitdirection",
+                        "content": "DESCENDING"
+                    },
+                    {
+                        "name": "platformserialidentifier",
+                        "content": "Sentinel-2B"
+                    },
+                    {
+                        "name": "processinglevel",
+                        "content": "Level-1C"
+                    },
+                    {
+                        "name": "identifier",
+                        "content": "S2B_MSIL1C_20201020T082909_N0209_R021_T36QUJ_20201020T093332"
+                    },
+                    {
+                        "name": "uuid",
+                        "content": "10fb86db-c579-4415-9387-1dfed1dfe616"
+                    }
+                ]
+            },
+            {
+                "title": "S2A_MSIL1C_20201020T073941_N0209_R092_T41VLK_20201020T092219",
+                "link": [
+                    {
+                        "href": "https://scihub.copernicus.eu/dhus/odata/v1/Products('de48270a-cfb6-4c4a-80d6-658072a5c5da')/$value"
+                    },
+                    {
+                        "rel": "alternative",
+                        "href": "https://scihub.copernicus.eu/dhus/odata/v1/Products('de48270a-cfb6-4c4a-80d6-658072a5c5da')/"
+                    },
+                    {
+                        "rel": "icon",
+                        "href": "https://scihub.copernicus.eu/dhus/odata/v1/Products('de48270a-cfb6-4c4a-80d6-658072a5c5da')/Products('Quicklook')/$value"
+                    }
+                ],
+                "id": "de48270a-cfb6-4c4a-80d6-658072a5c5da",
+                "summary": "Date: 2020-10-20T07:39:41.024Z, Instrument: MSI, Mode: , Satellite: Sentinel-2, Size: 610.87 MB",
+                "date": [
+                    {
+                        "name": "datatakesensingstart",
+                        "content": "2020-10-20T07:39:41.024Z"
+                    },
+                    {
+                        "name": "beginposition",
+                        "content": "2020-10-20T07:39:41.024Z"
+                    },
+                    {
+                        "name": "endposition",
+                        "content": "2020-10-20T07:39:41.024Z"
+                    },
+                    {
+                        "name": "ingestiondate",
+                        "content": "2020-10-20T13:20:34.1Z"
+                    }
+                ],
+                "int": [
+                    {
+                        "name": "orbitnumber",
+                        "content": "27831"
+                    },
+                    {
+                        "name": "relativeorbitnumber",
+                        "content": "92"
+                    }
+                ],
+                "double": {
+                    "name": "cloudcoverpercentage",
+                    "content": "99.4661"
+                },
+                "str": [
+                    {
+                        "name": "sensoroperationalmode",
+                        "content": "INS-NOBS"
+                    },
+                    {
+                        "name": "gmlfootprint",
+                        "content": "<gml:Polygon srsName=\"http://www.opengis.net/gml/srs/epsg.xml#4326\" xmlns:gml=\"http://www.opengis.net/gml\">\n   <gml:outerBoundaryIs>\n      <gml:LinearRing>\n         <gml:coordinates>63.07963052540224,59.308465787670606 63.02386548164206,59.62517592523118 63.022351829245274,59.62388730734748 62.95206722286724,60.0019604269119 62.94542987686454,60.03765021456233 62.94560984247317,60.03780573508645 62.944889688311285,60.04168026190405 62.945128998208205,60.04188730818256 62.94510711386806,60.04200514901181 62.945110323295445,60.04200792079933 62.94510329485135,60.04204581145134 62.94602076068264,60.04283889791829 62.86672323226038,60.45564233067944 62.857198341981885,60.50501692615655 62.85572019681423,60.503718770174736 62.85571503194242,60.50374398015904 62.855605773579335,60.503648075865655 62.77079412458831,60.917124197282554 62.77106784301829,60.91736844062231 62.7702390880992,60.921416714348936 62.77058701064574,60.92172747918603 62.77053829689261,60.921965980436674 62.77064346739506,60.922059752148655 62.770600068135465,60.92227277092522 62.77118537487644,60.92279511800134 62.705814855888356,61.236260730066746 62.13317525160495,61.27017682913034 62.09090772192087,59.16852966571992 63.07417567839059,59.03962362084538 63.07963052540224,59.308465787670606</gml:coordinates>\n      </gml:LinearRing>\n   </gml:outerBoundaryIs>\n</gml:Polygon>"
+                    },
+                    {
+                        "name": "footprint",
+                        "content": "MULTIPOLYGON (((59.16852966571992 62.09090772192087, 61.27017682913034 62.13317525160495, 61.236260730066746 62.705814855888356, 60.92279511800134 62.77118537487644, 60.92227277092522 62.770600068135465, 60.922059752148655 62.77064346739506, 60.921965980436674 62.77053829689261, 60.92172747918603 62.77058701064574, 60.921416714348936 62.7702390880992, 60.91736844062231 62.77106784301829, 60.917124197282554 62.77079412458831, 60.503648075865655 62.855605773579335, 60.50374398015904 62.85571503194242, 60.503718770174736 62.85572019681423, 60.50501692615655 62.857198341981885, 60.45564233067944 62.86672323226038, 60.04283889791829 62.94602076068264, 60.04204581145134 62.94510329485135, 60.04200792079933 62.945110323295445, 60.04200514901181 62.94510711386806, 60.04188730818256 62.945128998208205, 60.04168026190405 62.944889688311285, 60.03780573508645 62.94560984247317, 60.03765021456233 62.94542987686454, 60.0019604269119 62.95206722286724, 59.62388730734748 63.022351829245274, 59.62517592523118 63.02386548164206, 59.308465787670606 63.07963052540224, 59.03962362084538 63.07417567839059, 59.16852966571992 62.09090772192087)))"
+                    },
+                    {
+                        "name": "level1cpdiidentifier",
+                        "content": "S2A_OPER_MSI_L1C_TL_EPAE_20201020T092219_A027831_T41VLK_N02.09"
+                    },
+                    {
+                        "name": "tileid",
+                        "content": "41VLK"
+                    },
+                    {
+                        "name": "hv_order_tileid",
+                        "content": "VK41L"
+                    },
+                    {
+                        "name": "format",
+                        "content": "SAFE"
+                    },
+                    {
+                        "name": "processingbaseline",
+                        "content": "02.09"
+                    },
+                    {
+                        "name": "platformname",
+                        "content": "Sentinel-2"
+                    },
+                    {
+                        "name": "filename",
+                        "content": "S2A_MSIL1C_20201020T073941_N0209_R092_T41VLK_20201020T092219.SAFE"
+                    },
+                    {
+                        "name": "instrumentname",
+                        "content": "Multi-Spectral Instrument"
+                    },
+                    {
+                        "name": "instrumentshortname",
+                        "content": "MSI"
+                    },
+                    {
+                        "name": "size",
+                        "content": "610.87 MB"
+                    },
+                    {
+                        "name": "s2datatakeid",
+                        "content": "GS2A_20201020T073941_027831_N02.09"
+                    },
+                    {
+                        "name": "producttype",
+                        "content": "S2MSI1C"
+                    },
+                    {
+                        "name": "platformidentifier",
+                        "content": "2015-028A"
+                    },
+                    {
+                        "name": "orbitdirection",
+                        "content": "DESCENDING"
+                    },
+                    {
+                        "name": "platformserialidentifier",
+                        "content": "Sentinel-2A"
+                    },
+                    {
+                        "name": "processinglevel",
+                        "content": "Level-1C"
+                    },
+                    {
+                        "name": "identifier",
+                        "content": "S2A_MSIL1C_20201020T073941_N0209_R092_T41VLK_20201020T092219"
+                    },
+                    {
+                        "name": "uuid",
+                        "content": "de48270a-cfb6-4c4a-80d6-658072a5c5da"
+                    }
+                ]
+            },
+            {
+                "title": "S2A_MSIL1C_20201020T110101_N0209_R094_T32VLP_20201020T113137",
+                "link": [
+                    {
+                        "href": "https://scihub.copernicus.eu/dhus/odata/v1/Products('77ef9a90-1926-4863-a056-911f22f49e59')/$value"
+                    },
+                    {
+                        "rel": "alternative",
+                        "href": "https://scihub.copernicus.eu/dhus/odata/v1/Products('77ef9a90-1926-4863-a056-911f22f49e59')/"
+                    },
+                    {
+                        "rel": "icon",
+                        "href": "https://scihub.copernicus.eu/dhus/odata/v1/Products('77ef9a90-1926-4863-a056-911f22f49e59')/Products('Quicklook')/$value"
+                    }
+                ],
+                "id": "77ef9a90-1926-4863-a056-911f22f49e59",
+                "summary": "Date: 2020-10-20T11:01:01.025Z, Instrument: MSI, Mode: , Satellite: Sentinel-2, Size: 607.37 MB",
+                "date": [
+                    {
+                        "name": "datatakesensingstart",
+                        "content": "2020-10-20T11:01:01.025Z"
+                    },
+                    {
+                        "name": "beginposition",
+                        "content": "2020-10-20T11:01:01.025Z"
+                    },
+                    {
+                        "name": "endposition",
+                        "content": "2020-10-20T11:01:01.025Z"
+                    },
+                    {
+                        "name": "ingestiondate",
+                        "content": "2020-10-20T13:20:33.203Z"
+                    }
+                ],
+                "int": [
+                    {
+                        "name": "orbitnumber",
+                        "content": "27833"
+                    },
+                    {
+                        "name": "relativeorbitnumber",
+                        "content": "94"
+                    }
+                ],
+                "double": {
+                    "name": "cloudcoverpercentage",
+                    "content": "100.0"
+                },
+                "str": [
+                    {
+                        "name": "sensoroperationalmode",
+                        "content": "INS-NOBS"
+                    },
+                    {
+                        "name": "gmlfootprint",
+                        "content": "<gml:Polygon srsName=\"http://www.opengis.net/gml/srs/epsg.xml#4326\" xmlns:gml=\"http://www.opengis.net/gml\">\n   <gml:outerBoundaryIs>\n      <gml:LinearRing>\n         <gml:coordinates>62.17850010690095,5.157434290352174 62.220923807248376,7.265155550842721 61.23569362676834,7.319687679163652 61.194973173238445,5.277944539607054 62.17850010690095,5.157434290352174</gml:coordinates>\n      </gml:LinearRing>\n   </gml:outerBoundaryIs>\n</gml:Polygon>"
+                    },
+                    {
+                        "name": "footprint",
+                        "content": "MULTIPOLYGON (((5.277944539607054 61.194973173238445, 7.319687679163652 61.23569362676834, 7.265155550842721 62.220923807248376, 5.157434290352174 62.17850010690095, 5.277944539607054 61.194973173238445)))"
+                    },
+                    {
+                        "name": "level1cpdiidentifier",
+                        "content": "S2A_OPER_MSI_L1C_TL_VGS2_20201020T113137_A027833_T32VLP_N02.09"
+                    },
+                    {
+                        "name": "tileid",
+                        "content": "32VLP"
+                    },
+                    {
+                        "name": "hv_order_tileid",
+                        "content": "VP32L"
+                    },
+                    {
+                        "name": "format",
+                        "content": "SAFE"
+                    },
+                    {
+                        "name": "processingbaseline",
+                        "content": "02.09"
+                    },
+                    {
+                        "name": "platformname",
+                        "content": "Sentinel-2"
+                    },
+                    {
+                        "name": "filename",
+                        "content": "S2A_MSIL1C_20201020T110101_N0209_R094_T32VLP_20201020T113137.SAFE"
+                    },
+                    {
+                        "name": "instrumentname",
+                        "content": "Multi-Spectral Instrument"
+                    },
+                    {
+                        "name": "instrumentshortname",
+                        "content": "MSI"
+                    },
+                    {
+                        "name": "size",
+                        "content": "607.37 MB"
+                    },
+                    {
+                        "name": "s2datatakeid",
+                        "content": "GS2A_20201020T110101_027833_N02.09"
+                    },
+                    {
+                        "name": "producttype",
+                        "content": "S2MSI1C"
+                    },
+                    {
+                        "name": "platformidentifier",
+                        "content": "2015-028A"
+                    },
+                    {
+                        "name": "orbitdirection",
+                        "content": "DESCENDING"
+                    },
+                    {
+                        "name": "platformserialidentifier",
+                        "content": "Sentinel-2A"
+                    },
+                    {
+                        "name": "processinglevel",
+                        "content": "Level-1C"
+                    },
+                    {
+                        "name": "identifier",
+                        "content": "S2A_MSIL1C_20201020T110101_N0209_R094_T32VLP_20201020T113137"
+                    },
+                    {
+                        "name": "uuid",
+                        "content": "77ef9a90-1926-4863-a056-911f22f49e59"
+                    }
+                ]
+            },
+            {
+                "title": "S2A_MSIL1C_20201020T110101_N0209_R094_T32VMM_20201020T113137",
+                "link": [
+                    {
+                        "href": "https://scihub.copernicus.eu/dhus/odata/v1/Products('6fe41570-9059-442f-aa77-614a1c574a79')/$value"
+                    },
+                    {
+                        "rel": "alternative",
+                        "href": "https://scihub.copernicus.eu/dhus/odata/v1/Products('6fe41570-9059-442f-aa77-614a1c574a79')/"
+                    },
+                    {
+                        "rel": "icon",
+                        "href": "https://scihub.copernicus.eu/dhus/odata/v1/Products('6fe41570-9059-442f-aa77-614a1c574a79')/Products('Quicklook')/$value"
+                    }
+                ],
+                "id": "6fe41570-9059-442f-aa77-614a1c574a79",
+                "summary": "Date: 2020-10-20T11:01:01.025Z, Instrument: MSI, Mode: , Satellite: Sentinel-2, Size: 578.95 MB",
+                "date": [
+                    {
+                        "name": "datatakesensingstart",
+                        "content": "2020-10-20T11:01:01.025Z"
+                    },
+                    {
+                        "name": "beginposition",
+                        "content": "2020-10-20T11:01:01.025Z"
+                    },
+                    {
+                        "name": "endposition",
+                        "content": "2020-10-20T11:01:01.025Z"
+                    },
+                    {
+                        "name": "ingestiondate",
+                        "content": "2020-10-20T13:20:31.865Z"
+                    }
+                ],
+                "int": [
+                    {
+                        "name": "orbitnumber",
+                        "content": "27833"
+                    },
+                    {
+                        "name": "relativeorbitnumber",
+                        "content": "94"
+                    }
+                ],
+                "double": {
+                    "name": "cloudcoverpercentage",
+                    "content": "100.0"
+                },
+                "str": [
+                    {
+                        "name": "sensoroperationalmode",
+                        "content": "INS-NOBS"
+                    },
+                    {
+                        "name": "gmlfootprint",
+                        "content": "<gml:Polygon srsName=\"http://www.opengis.net/gml/srs/epsg.xml#4326\" xmlns:gml=\"http://www.opengis.net/gml\">\n   <gml:outerBoundaryIs>\n      <gml:LinearRing>\n         <gml:coordinates>59.855687230502056,9.174265796046884 59.855529212315226,9.174137013849435 59.71446371411665,9.065835719107056 59.57363458625896,8.957225835760896 59.448525138155695,8.862476653876369 59.43861634029021,7.236111997440402 60.424068377995575,7.182992688697282 60.436338819998284,9.177320731241151 59.855687230502056,9.174265796046884</gml:coordinates>\n      </gml:LinearRing>\n   </gml:outerBoundaryIs>\n</gml:Polygon>"
+                    },
+                    {
+                        "name": "footprint",
+                        "content": "MULTIPOLYGON (((7.236111997440402 59.43861634029021, 8.862476653876369 59.448525138155695, 8.957225835760896 59.57363458625896, 9.065835719107056 59.71446371411665, 9.174137013849435 59.855529212315226, 9.174265796046884 59.855687230502056, 9.177320731241151 60.436338819998284, 7.182992688697282 60.424068377995575, 7.236111997440402 59.43861634029021)))"
+                    },
+                    {
+                        "name": "level1cpdiidentifier",
+                        "content": "S2A_OPER_MSI_L1C_TL_VGS2_20201020T113137_A027833_T32VMM_N02.09"
+                    },
+                    {
+                        "name": "tileid",
+                        "content": "32VMM"
+                    },
+                    {
+                        "name": "hv_order_tileid",
+                        "content": "VM32M"
+                    },
+                    {
+                        "name": "format",
+                        "content": "SAFE"
+                    },
+                    {
+                        "name": "processingbaseline",
+                        "content": "02.09"
+                    },
+                    {
+                        "name": "platformname",
+                        "content": "Sentinel-2"
+                    },
+                    {
+                        "name": "filename",
+                        "content": "S2A_MSIL1C_20201020T110101_N0209_R094_T32VMM_20201020T113137.SAFE"
+                    },
+                    {
+                        "name": "instrumentname",
+                        "content": "Multi-Spectral Instrument"
+                    },
+                    {
+                        "name": "instrumentshortname",
+                        "content": "MSI"
+                    },
+                    {
+                        "name": "size",
+                        "content": "578.95 MB"
+                    },
+                    {
+                        "name": "s2datatakeid",
+                        "content": "GS2A_20201020T110101_027833_N02.09"
+                    },
+                    {
+                        "name": "producttype",
+                        "content": "S2MSI1C"
+                    },
+                    {
+                        "name": "platformidentifier",
+                        "content": "2015-028A"
+                    },
+                    {
+                        "name": "orbitdirection",
+                        "content": "DESCENDING"
+                    },
+                    {
+                        "name": "platformserialidentifier",
+                        "content": "Sentinel-2A"
+                    },
+                    {
+                        "name": "processinglevel",
+                        "content": "Level-1C"
+                    },
+                    {
+                        "name": "identifier",
+                        "content": "S2A_MSIL1C_20201020T110101_N0209_R094_T32VMM_20201020T113137"
+                    },
+                    {
+                        "name": "uuid",
+                        "content": "6fe41570-9059-442f-aa77-614a1c574a79"
+                    }
+                ]
+            },
+            {
+                "title": "S2A_MSIL1C_20201020T110101_N0209_R094_T32VML_20201020T113137",
+                "link": [
+                    {
+                        "href": "https://scihub.copernicus.eu/dhus/odata/v1/Products('2577d999-bd82-48f8-a54b-8a669576fc75')/$value"
+                    },
+                    {
+                        "rel": "alternative",
+                        "href": "https://scihub.copernicus.eu/dhus/odata/v1/Products('2577d999-bd82-48f8-a54b-8a669576fc75')/"
+                    },
+                    {
+                        "rel": "icon",
+                        "href": "https://scihub.copernicus.eu/dhus/odata/v1/Products('2577d999-bd82-48f8-a54b-8a669576fc75')/Products('Quicklook')/$value"
+                    }
+                ],
+                "id": "2577d999-bd82-48f8-a54b-8a669576fc75",
+                "summary": "Date: 2020-10-20T11:01:01.025Z, Instrument: MSI, Mode: , Satellite: Sentinel-2, Size: 412.58 MB",
+                "date": [
+                    {
+                        "name": "datatakesensingstart",
+                        "content": "2020-10-20T11:01:01.025Z"
+                    },
+                    {
+                        "name": "beginposition",
+                        "content": "2020-10-20T11:01:01.025Z"
+                    },
+                    {
+                        "name": "endposition",
+                        "content": "2020-10-20T11:01:01.025Z"
+                    },
+                    {
+                        "name": "ingestiondate",
+                        "content": "2020-10-20T13:20:08.867Z"
+                    }
+                ],
+                "int": [
+                    {
+                        "name": "orbitnumber",
+                        "content": "27833"
+                    },
+                    {
+                        "name": "relativeorbitnumber",
+                        "content": "94"
+                    }
+                ],
+                "double": {
+                    "name": "cloudcoverpercentage",
+                    "content": "100.0"
+                },
+                "str": [
+                    {
+                        "name": "sensoroperationalmode",
+                        "content": "INS-NOBS"
+                    },
+                    {
+                        "name": "gmlfootprint",
+                        "content": "<gml:Polygon srsName=\"http://www.opengis.net/gml/srs/epsg.xml#4326\" xmlns:gml=\"http://www.opengis.net/gml\">\n   <gml:outerBoundaryIs>\n      <gml:LinearRing>\n         <gml:coordinates>59.536751776009545,8.929293364235244 59.43257393920313,8.850396326820773 59.29196446610349,8.742343027523075 59.15127477893316,8.635648515403403 59.009969724478346,8.532014245811496 58.86915248801608,8.426771946954373 58.72803226557358,8.323172315693494 58.58659250914172,8.221178039009336 58.54628163572485,8.191948672686324 58.54078550591164,7.281437545496386 59.52639875303964,7.231527919476722 59.536751776009545,8.929293364235244</gml:coordinates>\n      </gml:LinearRing>\n   </gml:outerBoundaryIs>\n</gml:Polygon>"
+                    },
+                    {
+                        "name": "footprint",
+                        "content": "MULTIPOLYGON (((7.281437545496386 58.54078550591164, 8.191948672686324 58.54628163572485, 8.221178039009336 58.58659250914172, 8.323172315693494 58.72803226557358, 8.426771946954373 58.86915248801608, 8.532014245811496 59.009969724478346, 8.635648515403403 59.15127477893316, 8.742343027523075 59.29196446610349, 8.850396326820773 59.43257393920313, 8.929293364235244 59.536751776009545, 7.231527919476722 59.52639875303964, 7.281437545496386 58.54078550591164)))"
+                    },
+                    {
+                        "name": "level1cpdiidentifier",
+                        "content": "S2A_OPER_MSI_L1C_TL_VGS2_20201020T113137_A027833_T32VML_N02.09"
+                    },
+                    {
+                        "name": "tileid",
+                        "content": "32VML"
+                    },
+                    {
+                        "name": "hv_order_tileid",
+                        "content": "VL32M"
+                    },
+                    {
+                        "name": "format",
+                        "content": "SAFE"
+                    },
+                    {
+                        "name": "processingbaseline",
+                        "content": "02.09"
+                    },
+                    {
+                        "name": "platformname",
+                        "content": "Sentinel-2"
+                    },
+                    {
+                        "name": "filename",
+                        "content": "S2A_MSIL1C_20201020T110101_N0209_R094_T32VML_20201020T113137.SAFE"
+                    },
+                    {
+                        "name": "instrumentname",
+                        "content": "Multi-Spectral Instrument"
+                    },
+                    {
+                        "name": "instrumentshortname",
+                        "content": "MSI"
+                    },
+                    {
+                        "name": "size",
+                        "content": "412.58 MB"
+                    },
+                    {
+                        "name": "s2datatakeid",
+                        "content": "GS2A_20201020T110101_027833_N02.09"
+                    },
+                    {
+                        "name": "producttype",
+                        "content": "S2MSI1C"
+                    },
+                    {
+                        "name": "platformidentifier",
+                        "content": "2015-028A"
+                    },
+                    {
+                        "name": "orbitdirection",
+                        "content": "DESCENDING"
+                    },
+                    {
+                        "name": "platformserialidentifier",
+                        "content": "Sentinel-2A"
+                    },
+                    {
+                        "name": "processinglevel",
+                        "content": "Level-1C"
+                    },
+                    {
+                        "name": "identifier",
+                        "content": "S2A_MSIL1C_20201020T110101_N0209_R094_T32VML_20201020T113137"
+                    },
+                    {
+                        "name": "uuid",
+                        "content": "2577d999-bd82-48f8-a54b-8a669576fc75"
+                    }
+                ]
+            },
+            {
+                "title": "S2A_MSIL1C_20201020T073941_N0209_R092_T39TVH_20201020T092219",
+                "link": [
+                    {
+                        "href": "https://scihub.copernicus.eu/dhus/odata/v1/Products('79a91e80-3918-4bc7-a8a9-b5c46515c980')/$value"
+                    },
+                    {
+                        "rel": "alternative",
+                        "href": "https://scihub.copernicus.eu/dhus/odata/v1/Products('79a91e80-3918-4bc7-a8a9-b5c46515c980')/"
+                    },
+                    {
+                        "rel": "icon",
+                        "href": "https://scihub.copernicus.eu/dhus/odata/v1/Products('79a91e80-3918-4bc7-a8a9-b5c46515c980')/Products('Quicklook')/$value"
+                    }
+                ],
+                "id": "79a91e80-3918-4bc7-a8a9-b5c46515c980",
+                "summary": "Date: 2020-10-20T07:39:41.024Z, Instrument: MSI, Mode: , Satellite: Sentinel-2, Size: 385.83 MB",
+                "date": [
+                    {
+                        "name": "datatakesensingstart",
+                        "content": "2020-10-20T07:39:41.024Z"
+                    },
+                    {
+                        "name": "beginposition",
+                        "content": "2020-10-20T07:39:41.024Z"
+                    },
+                    {
+                        "name": "endposition",
+                        "content": "2020-10-20T07:39:41.024Z"
+                    },
+                    {
+                        "name": "ingestiondate",
+                        "content": "2020-10-20T13:20:06.264Z"
+                    }
+                ],
+                "int": [
+                    {
+                        "name": "orbitnumber",
+                        "content": "27831"
+                    },
+                    {
+                        "name": "relativeorbitnumber",
+                        "content": "92"
+                    }
+                ],
+                "double": {
+                    "name": "cloudcoverpercentage",
+                    "content": "88.013"
+                },
+                "str": [
+                    {
+                        "name": "sensoroperationalmode",
+                        "content": "INS-NOBS"
+                    },
+                    {
+                        "name": "gmlfootprint",
+                        "content": "<gml:Polygon srsName=\"http://www.opengis.net/gml/srs/epsg.xml#4326\" xmlns:gml=\"http://www.opengis.net/gml\">\n   <gml:outerBoundaryIs>\n      <gml:LinearRing>\n         <gml:coordinates>43.35018842431502,50.585798863696894 43.24955828456633,50.54678517056861 43.10374852502592,50.49064550833573 42.95788067859522,50.434328827727526 42.812045383289885,50.37769357115462 42.66609779699942,50.32140284154005 42.52001751167581,50.265593583975374 42.3739390350096,50.20987752288749 42.35964039152287,50.20441426151453 42.35763630855867,49.785227256908996 43.346194685301704,49.7656944498199 43.35018842431502,50.585798863696894</gml:coordinates>\n      </gml:LinearRing>\n   </gml:outerBoundaryIs>\n</gml:Polygon>"
+                    },
+                    {
+                        "name": "footprint",
+                        "content": "MULTIPOLYGON (((49.785227256908996 42.35763630855867, 50.20441426151453 42.35964039152287, 50.20987752288749 42.3739390350096, 50.265593583975374 42.52001751167581, 50.32140284154005 42.66609779699942, 50.37769357115462 42.812045383289885, 50.434328827727526 42.95788067859522, 50.49064550833573 43.10374852502592, 50.54678517056861 43.24955828456633, 50.585798863696894 43.35018842431502, 49.7656944498199 43.346194685301704, 49.785227256908996 42.35763630855867)))"
+                    },
+                    {
+                        "name": "level1cpdiidentifier",
+                        "content": "S2A_OPER_MSI_L1C_TL_EPAE_20201020T092219_A027831_T39TVH_N02.09"
+                    },
+                    {
+                        "name": "tileid",
+                        "content": "39TVH"
+                    },
+                    {
+                        "name": "hv_order_tileid",
+                        "content": "TH39V"
+                    },
+                    {
+                        "name": "format",
+                        "content": "SAFE"
+                    },
+                    {
+                        "name": "processingbaseline",
+                        "content": "02.09"
+                    },
+                    {
+                        "name": "platformname",
+                        "content": "Sentinel-2"
+                    },
+                    {
+                        "name": "filename",
+                        "content": "S2A_MSIL1C_20201020T073941_N0209_R092_T39TVH_20201020T092219.SAFE"
+                    },
+                    {
+                        "name": "instrumentname",
+                        "content": "Multi-Spectral Instrument"
+                    },
+                    {
+                        "name": "instrumentshortname",
+                        "content": "MSI"
+                    },
+                    {
+                        "name": "size",
+                        "content": "385.83 MB"
+                    },
+                    {
+                        "name": "s2datatakeid",
+                        "content": "GS2A_20201020T073941_027831_N02.09"
+                    },
+                    {
+                        "name": "producttype",
+                        "content": "S2MSI1C"
+                    },
+                    {
+                        "name": "platformidentifier",
+                        "content": "2015-028A"
+                    },
+                    {
+                        "name": "orbitdirection",
+                        "content": "DESCENDING"
+                    },
+                    {
+                        "name": "platformserialidentifier",
+                        "content": "Sentinel-2A"
+                    },
+                    {
+                        "name": "processinglevel",
+                        "content": "Level-1C"
+                    },
+                    {
+                        "name": "identifier",
+                        "content": "S2A_MSIL1C_20201020T073941_N0209_R092_T39TVH_20201020T092219"
+                    },
+                    {
+                        "name": "uuid",
+                        "content": "79a91e80-3918-4bc7-a8a9-b5c46515c980"
+                    }
+                ]
+            },
+            {
+                "title": "S2A_MSIL1C_20201020T073941_N0209_R092_T39VWC_20201020T092219",
+                "link": [
+                    {
+                        "href": "https://scihub.copernicus.eu/dhus/odata/v1/Products('fed0e260-9845-42b6-b32d-351dae20d203')/$value"
+                    },
+                    {
+                        "rel": "alternative",
+                        "href": "https://scihub.copernicus.eu/dhus/odata/v1/Products('fed0e260-9845-42b6-b32d-351dae20d203')/"
+                    },
+                    {
+                        "rel": "icon",
+                        "href": "https://scihub.copernicus.eu/dhus/odata/v1/Products('fed0e260-9845-42b6-b32d-351dae20d203')/Products('Quicklook')/$value"
+                    }
+                ],
+                "id": "fed0e260-9845-42b6-b32d-351dae20d203",
+                "summary": "Date: 2020-10-20T07:39:41.024Z, Instrument: MSI, Mode: , Satellite: Sentinel-2, Size: 373.65 MB",
+                "date": [
+                    {
+                        "name": "datatakesensingstart",
+                        "content": "2020-10-20T07:39:41.024Z"
+                    },
+                    {
+                        "name": "beginposition",
+                        "content": "2020-10-20T07:39:41.024Z"
+                    },
+                    {
+                        "name": "endposition",
+                        "content": "2020-10-20T07:39:41.024Z"
+                    },
+                    {
+                        "name": "ingestiondate",
+                        "content": "2020-10-20T13:20:04.241Z"
+                    }
+                ],
+                "int": [
+                    {
+                        "name": "orbitnumber",
+                        "content": "27831"
+                    },
+                    {
+                        "name": "relativeorbitnumber",
+                        "content": "92"
+                    }
+                ],
+                "double": {
+                    "name": "cloudcoverpercentage",
+                    "content": "0.8462"
+                },
+                "str": [
+                    {
+                        "name": "sensoroperationalmode",
+                        "content": "INS-NOBS"
+                    },
+                    {
+                        "name": "gmlfootprint",
+                        "content": "<gml:Polygon srsName=\"http://www.opengis.net/gml/srs/epsg.xml#4326\" xmlns:gml=\"http://www.opengis.net/gml\">\n   <gml:outerBoundaryIs>\n      <gml:LinearRing>\n         <gml:coordinates>55.85186840941737,51.765209235247596 55.893414123908165,51.78581053451662 56.0384212578256,51.857771477026816 56.18338390311118,51.92980485149333 56.32823921983038,52.00238551361903 56.47302822820235,52.07558925958979 56.61782325643008,52.149017308334045 56.76253081606709,52.22254109871104 56.83473593212355,52.25954840399186 56.8308490729103,52.79910585152769 55.84483052669612,52.75328586420974 55.85186840941737,51.765209235247596</gml:coordinates>\n      </gml:LinearRing>\n   </gml:outerBoundaryIs>\n</gml:Polygon>"
+                    },
+                    {
+                        "name": "footprint",
+                        "content": "MULTIPOLYGON (((52.75328586420974 55.84483052669612, 52.79910585152769 56.8308490729103, 52.25954840399186 56.83473593212355, 52.22254109871104 56.76253081606709, 52.149017308334045 56.61782325643008, 52.07558925958979 56.47302822820235, 52.00238551361903 56.32823921983038, 51.92980485149333 56.18338390311118, 51.857771477026816 56.0384212578256, 51.78581053451662 55.893414123908165, 51.765209235247596 55.85186840941737, 52.75328586420974 55.84483052669612)))"
+                    },
+                    {
+                        "name": "level1cpdiidentifier",
+                        "content": "S2A_OPER_MSI_L1C_TL_EPAE_20201020T092219_A027831_T39VWC_N02.09"
+                    },
+                    {
+                        "name": "tileid",
+                        "content": "39VWC"
+                    },
+                    {
+                        "name": "hv_order_tileid",
+                        "content": "VC39W"
+                    },
+                    {
+                        "name": "format",
+                        "content": "SAFE"
+                    },
+                    {
+                        "name": "processingbaseline",
+                        "content": "02.09"
+                    },
+                    {
+                        "name": "platformname",
+                        "content": "Sentinel-2"
+                    },
+                    {
+                        "name": "filename",
+                        "content": "S2A_MSIL1C_20201020T073941_N0209_R092_T39VWC_20201020T092219.SAFE"
+                    },
+                    {
+                        "name": "instrumentname",
+                        "content": "Multi-Spectral Instrument"
+                    },
+                    {
+                        "name": "instrumentshortname",
+                        "content": "MSI"
+                    },
+                    {
+                        "name": "size",
+                        "content": "373.65 MB"
+                    },
+                    {
+                        "name": "s2datatakeid",
+                        "content": "GS2A_20201020T073941_027831_N02.09"
+                    },
+                    {
+                        "name": "producttype",
+                        "content": "S2MSI1C"
+                    },
+                    {
+                        "name": "platformidentifier",
+                        "content": "2015-028A"
+                    },
+                    {
+                        "name": "orbitdirection",
+                        "content": "DESCENDING"
+                    },
+                    {
+                        "name": "platformserialidentifier",
+                        "content": "Sentinel-2A"
+                    },
+                    {
+                        "name": "processinglevel",
+                        "content": "Level-1C"
+                    },
+                    {
+                        "name": "identifier",
+                        "content": "S2A_MSIL1C_20201020T073941_N0209_R092_T39VWC_20201020T092219"
+                    },
+                    {
+                        "name": "uuid",
+                        "content": "fed0e260-9845-42b6-b32d-351dae20d203"
+                    }
+                ]
+            }
+        ]
+    }
+}

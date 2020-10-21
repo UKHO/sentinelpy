@@ -30,7 +30,7 @@ readme = "README.md"
 [tool.poetry.dependencies]
 mypy = "^0.790"
 python = "^3.6"
-boto3 = "^1.15.16"
+requests = "^2.24.0"
 
 [tool.poetry.dev-dependencies]
 assertpy = "^1.1"
@@ -46,6 +46,7 @@ pytest = "^6.1.1"
 tox-gh-actions = "^2.1.0"
 tox = "^3.20.1"
 toml = "^0.10.1"
+responses = "^0.12.0"
 
 [tool.pytest.ini_options]
 addopts = "--cov=query_sentinel_products --cov-fail-under=95"
