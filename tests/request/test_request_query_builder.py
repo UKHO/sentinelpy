@@ -193,9 +193,9 @@ class TestRequestQueryBuilder:
         ).is_equal_to("filename should not be empty")
 
     def test_when_footprint_supplied_then_returns_correct_value(self):
-        builder = RequestQueryBuilder().footprint("0 0")
+        builder = RequestQueryBuilder().footprint("0, 0")
 
-        assert_that(builder.build()).is_equal_to('footprint:"Intersects(0 0)"')
+        assert_that(builder.build()).is_equal_to('footprint:"Intersects(0, 0)"')
 
     @patch(
         "query_sentinel_products.request.request_query_builder.geometry_type_validator"
@@ -213,11 +213,11 @@ class TestRequestQueryBuilder:
     def test_when_footprint_supplied_then_formats_matches_api_format(
         self, format_footprint_mock
     ):
-        format_footprint_mock.return_value = '"Intersects(0 0)"'
+        format_footprint_mock.return_value = '"Intersects(0, 0)"'
 
-        RequestQueryBuilder().footprint("0 0")
+        RequestQueryBuilder().footprint("0, 0")
 
-        format_footprint_mock.assert_called_once_with("0 0")
+        format_footprint_mock.assert_called_once_with("0, 0")
 
     def test_when_invalid_footprint_supplied_then_raises_value_error(self):
         expected_error = (
@@ -513,7 +513,7 @@ class TestRequestQueryBuilder:
     def test_when_building_query_with_and_clauses_then_query_built_correctly(self):
         expected_query_value = (
             "platformname:Sentinel-1 AND cloudcoverpercentage:[10 TO 20] "
-            'AND footprint:"Intersects(0 0)"'
+            'AND footprint:"Intersects(0, 0)"'
         )
         builder = (
             RequestQueryBuilder()
@@ -521,7 +521,7 @@ class TestRequestQueryBuilder:
             .and_()
             .cloud_cover_percentage("10 TO 20")
             .and_()
-            .footprint("0 0")
+            .footprint("0, 0")
         )
 
         result = builder.build()
@@ -531,7 +531,7 @@ class TestRequestQueryBuilder:
     def test_when_building_query_with_or_clauses_then_query_built_correctly(self):
         expected_query = (
             "platformname:Sentinel-1 OR cloudcoverpercentage:[10 TO 20] "
-            'OR footprint:"Intersects(0 0)"'
+            'OR footprint:"Intersects(0, 0)"'
         )
         builder = (
             RequestQueryBuilder()
@@ -539,7 +539,7 @@ class TestRequestQueryBuilder:
             .or_()
             .cloud_cover_percentage("10 TO 20")
             .or_()
-            .footprint("0 0")
+            .footprint("0, 0")
         )
 
         result = builder.build()
@@ -556,7 +556,7 @@ class TestRequestQueryBuilder:
     def test_when_query_with_and_or_and_not_clauses_then_query_built_correctly(self,):
         expected_result = (
             "NOT platformname:Sentinel-1 AND cloudcoverpercentage:[10 TO 20] "
-            'OR footprint:"Intersects(0 0)"'
+            'OR footprint:"Intersects(0, 0)"'
         )
         builder = (
             RequestQueryBuilder()
@@ -565,7 +565,7 @@ class TestRequestQueryBuilder:
             .and_()
             .cloud_cover_percentage("10 TO 20")
             .or_()
-            .footprint("0 0")
+            .footprint("0, 0")
         )
 
         result = builder.build()
@@ -575,7 +575,7 @@ class TestRequestQueryBuilder:
     def test_when_and_operator_trailing_then_does_not_have_operator_at_end(self,):
         expected_result = (
             "platformname:Sentinel-1 AND cloudcoverpercentage:[10 TO 20] AND "
-            'footprint:"Intersects(0 0)"'
+            'footprint:"Intersects(0, 0)"'
         )
         builder = (
             RequestQueryBuilder()
@@ -583,7 +583,7 @@ class TestRequestQueryBuilder:
             .and_()
             .cloud_cover_percentage("10 TO 20")
             .and_()
-            .footprint("0 0")
+            .footprint("0, 0")
             .and_()
         )
 
@@ -596,7 +596,7 @@ class TestRequestQueryBuilder:
     ):
         expected_result = (
             "platformname:Sentinel-1 AND cloudcoverpercentage:[10 TO 20] "
-            'AND footprint:"Intersects(0 0)"'
+            'AND footprint:"Intersects(0, 0)"'
         )
 
         builder = (
@@ -606,7 +606,7 @@ class TestRequestQueryBuilder:
             .and_()
             .cloud_cover_percentage("10 TO 20")
             .and_()
-            .footprint("0 0")
+            .footprint("0, 0")
             .and_()
         )
 
@@ -623,11 +623,11 @@ class TestRequestQueryBuilder:
 
     def test_when_group_called_supplied_then_adds_grouped_query(self):
         inner_builder = (
-            RequestQueryBuilder().footprint("0 0").and_().cloud_cover_percentage("5")
+            RequestQueryBuilder().footprint("0, 0").and_().cloud_cover_percentage("5")
         )
 
         expected_result = (
-            '(footprint:"Intersects(0 0)" AND cloudcoverpercentage:5) OR '
+            '(footprint:"Intersects(0, 0)" AND cloudcoverpercentage:5) OR '
             "platformname:Sentinel-1"
         )
 
@@ -644,7 +644,7 @@ class TestRequestQueryBuilder:
 
     def test_when_building_query_supplied_then_group_can_be_negated(self):
         inner_builder = (
-            RequestQueryBuilder().footprint("0 0").and_().cloud_cover_percentage("5")
+            RequestQueryBuilder().footprint("0, 0").and_().cloud_cover_percentage("5")
         )
 
         builder = RequestQueryBuilder().not_().group_(inner_builder)
@@ -652,20 +652,20 @@ class TestRequestQueryBuilder:
         result = builder.build()
 
         assert_that(result).is_equal_to(
-            'NOT (footprint:"Intersects(0 0)" AND cloudcoverpercentage:5)'
+            'NOT (footprint:"Intersects(0, 0)" AND cloudcoverpercentage:5)'
         )
 
     def test_when_no_operator_specified_between_two_filtera_then_defaults_to_and(self):
 
         expected_result = (
             "platformname:Sentinel-1 AND cloudcoverpercentage:[10 TO 20] "
-            'AND footprint:"Intersects(0 0)"'
+            'AND footprint:"Intersects(0, 0)"'
         )
         builder = (
             RequestQueryBuilder()
             .platform_name(PlatformName.SENTINEL_1)
             .cloud_cover_percentage("10 TO 20")
-            .footprint("0 0")
+            .footprint("0, 0")
         )
 
         result = builder.build()

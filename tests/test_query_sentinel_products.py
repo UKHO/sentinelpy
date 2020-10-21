@@ -55,7 +55,7 @@ class TestQuerySentinelProducts:
         result = query_sentinel_hub(request.build(), log_level=logging.DEBUG)
 
         assert_that(result.success).is_true()
-        assert_that(result.data).is_equal_to(sentinel_data)
+        assert_that(result.body).is_equal_to(sentinel_data)
         assert_that(responses.calls[0].request.url).is_equal_to(expected_url)
 
     @responses.activate
@@ -121,5 +121,5 @@ class TestQuerySentinelProducts:
 
         assert_that(result.success).is_false()
         assert_that(result.status_code).is_none()
-        assert_that(result.data).is_none()
+        assert_that(result.body).is_none()
         assert_that(result.error).is_equal_to(error)

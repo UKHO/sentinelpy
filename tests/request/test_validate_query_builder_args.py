@@ -67,14 +67,14 @@ class TestValidateQueryBuilderArgs:
         assert_that(result).is_none()
 
     def test_when_geometry_type_validator_called_with_point_then_returns_str(self):
-        result = geometry_type_validator('"Intersects(0 0)"')
+        result = geometry_type_validator('"Intersects(0, 0)"')
 
-        assert_that(result).is_equal_to('"Intersects(0 0)"')
+        assert_that(result).is_equal_to('"Intersects(0, 0)"')
 
     def test_when_geometry_type_validator_point_without_intersects_then_returns_none(
         self,
     ):
-        result = geometry_type_validator("0 0")
+        result = geometry_type_validator("0, 0")
 
         assert_that(result).is_none()
 

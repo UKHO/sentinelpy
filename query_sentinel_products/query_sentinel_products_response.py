@@ -1,12 +1,7 @@
-from collections import namedtuple
-from typing import Any, Callable, Dict, Optional
-
-QuerySentinelProductsResponseTuple = namedtuple(
-    "SentinelProductResponse", ["status_code", "body", "error"]
-)
+from typing import Any, Callable, Dict, NamedTuple, Optional, Tuple
 
 
-class QuerySentinelProductsResponse:
+class QuerySentinelProductsResponse(NamedTuple):
     """Represents the result from the Sentinel Hub API
 
     Can be interacted with as an object or in a more functional style using
@@ -38,50 +33,22 @@ class QuerySentinelProductsResponse:
     # Using the functional style methods
     successful_response.on_success(
         lambda data: print(f'success:{data}')
-    ).on_error(
-        lambda error: print(f'error:{error}')
     ).on_failure(
-        lambda status_code, data: print(f'failure:{status_code}')
+        lambda tuple, data: print(f'failure:{tuple[0]}')
     ) # success:{}
 
     """
 
-    def __init__(
-        self,
-        status_code: Optional[int],
-        data: Optional[Dict[str, Any]],
-        error: Optional[BaseException] = None,
-    ):
-        self.__status_code = status_code
-        self.__data = data
-        self.__error = error
-
-    @property
-    def status_code(self) -> Optional[int]:
-        return self.__status_code
-
-    @property
-    def data(self) -> Optional[Dict[str, Any]]:
-        return self.__data
-
-    @property
-    def error(self) -> Optional[BaseException]:
-        return self.__error
+    status_code: Optional[int]
+    body: Optional[Dict[str, Any]]
+    error: Optional[BaseException] = None
 
     @property
     def success(self) -> bool:
         return (
-            self.__error is None
-            and self.__status_code is not None
-            and 200 <= self.__status_code < 300
-        )
-
-    @property
-    def tuple(self) -> QuerySentinelProductsResponseTuple:
-        """Converts the result into a named tuple so that it can be
-        easily consumed."""
-        return QuerySentinelProductsResponseTuple(
-            self.__status_code, self.__data, self.__error
+            self.error is None
+            and self.status_code is not None
+            and 200 <= self.status_code < 300
         )
 
     def raise_error(self):
@@ -91,8 +58,8 @@ class QuerySentinelProductsResponse:
         - Prevent exceptions being swallowed
         - You prefer to handle exception rather than checking if value is None
         """
-        if self.__error is not None:
-            raise self.__error
+        if self.error is not None:
+            raise self.error
 
     def on_success(
         self, callback: Callable[[Dict[str, Any]], None]
@@ -106,46 +73,23 @@ class QuerySentinelProductsResponse:
         Returns:
             self::QuerySentinelProductsResponse
         """
-        if self.__data is not None and self.success:
-            callback(self.__data)
-        return self
-
-    def on_error(
-        self, callback: Callable[[BaseException], None]
-    ) -> "QuerySentinelProductsResponse":
-        """Calls supplied callback with exception if there was an error raised
-
-        Args:
-            callback::Callable[[BaseException], None]
-                Callback to call when there is an error
-
-        Returns:
-            self::QuerySentinelProductsResponse
-        """
-        if self.__error is not None:
-            callback(self.__error)
+        if self.body is not None and self.success:
+            callback(self.body)
         return self
 
     def on_failure(
-        self, callback: Callable[[int, Dict[str, Any]], None]
+        self, callback: Callable[["QuerySentinelProductsResponse"], None],
     ) -> "QuerySentinelProductsResponse":
-        """Calls callback if API call failed because the API call failed
-        because a non-2XX response code was received
+        """Calls callback if the request failed in some way either could not
+        reach API or there was an error in the response or parsing the response
 
         Args:
-            callback::Callable[[int, Dict[str, Any]], None]
+            callback::Callable["QuerySentinelProductsResponse"]
                 Callback to call if was failure.
 
         Returns:
             self::QuerySentinelProductsResponse
         """
-        if (
-            self.__status_code is not None
-            and self.__status_code >= 300
-            and self.__error is None
-        ):
-            callback(self.__status_code, self.__data if self.__data is not None else {})
+        if not self.success or self.body is None:
+            callback(self)
         return self
-
-    def __eq__(self, o: object) -> bool:
-        return isinstance(o, QuerySentinelProductsResponse) and o.tuple == self.tuple

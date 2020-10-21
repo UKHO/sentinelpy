@@ -5,7 +5,6 @@ from assertpy import assert_that, fail
 from query_sentinel_products.exceptions import QuerySentinelProductsError
 from query_sentinel_products.query_sentinel_products_response import (
     QuerySentinelProductsResponse,
-    QuerySentinelProductsResponseTuple,
 )
 
 
@@ -14,7 +13,7 @@ class TestQuerySentinelProductsResponse:
         success_response = QuerySentinelProductsResponse(200, {})
 
         assert_that(success_response.status_code).is_equal_to(200)
-        assert_that(success_response.data).is_equal_to({})
+        assert_that(success_response.body).is_equal_to({})
         assert_that(success_response.error).is_equal_to(None)
 
     def test_when_success_response_then_raise_error_does_nothing(self):
@@ -50,47 +49,6 @@ class TestQuerySentinelProductsResponse:
         error_response = QuerySentinelProductsResponse(400, None, None)
 
         assert_that(error_response.success).is_false()
-
-    def test_when_to_tuple_called_then_returns_value_as_tuple(self):
-        success_response = QuerySentinelProductsResponse(200, {})
-
-        assert_that(success_response.tuple).is_equal_to(
-            QuerySentinelProductsResponseTuple(200, {}, None)
-        )
-
-    def test_when_success_and_on_error_called_then_does_not_call_callback(self):
-        callback = Mock()
-
-        success_response = QuerySentinelProductsResponse(200, {})
-        success_response.on_error(callback)
-
-        callback.assert_not_called()
-
-    def test_when_error_and_on_error_called_then_calls_callback(self):
-        callback = Mock()
-
-        error = QuerySentinelProductsError(ValueError(), 200, "not json")
-
-        error_response = QuerySentinelProductsResponse(200, None, error)
-        error_response.on_error(callback)
-
-        callback.assert_called_once_with(error)
-
-    def test_when_call_has_non_200_code_on_error_then_does_not_call_callback(self):
-        callback = Mock()
-
-        response = QuerySentinelProductsResponse(400, None, None)
-        response.on_error(callback)
-
-        callback.assert_not_called()
-
-    def test_when_on_error_call_then_returns_response(self):
-        callback = Mock()
-
-        response = QuerySentinelProductsResponse(400, None, None)
-        result = response.on_error(callback)
-
-        assert_that(result).is_equal_to(response)
 
     def test_when_success_and_on_success_called_then_calls_callback(self):
         callback = Mock()
@@ -134,7 +92,7 @@ class TestQuerySentinelProductsResponse:
 
         callback.assert_not_called()
 
-    def test_when_error_and_on_failure_called_then_does_not_call_callback(self):
+    def test_when_error_and_on_failure_called_then_calls_callback(self):
         callback = Mock()
 
         error = QuerySentinelProductsError(ValueError(), 200, "not json")
@@ -142,7 +100,9 @@ class TestQuerySentinelProductsResponse:
         error_response = QuerySentinelProductsResponse(200, None, error)
         error_response.on_failure(callback)
 
-        callback.assert_not_called()
+        callback.assert_called_once_with(
+            QuerySentinelProductsResponse(200, None, error)
+        )
 
     def test_when_call_has_non_200_code_on_failure_then_calls_callback(self):
         callback = Mock()
@@ -150,7 +110,9 @@ class TestQuerySentinelProductsResponse:
         response = QuerySentinelProductsResponse(400, {"data": {}}, None)
         response.on_failure(callback)
 
-        callback.assert_called_once_with(400, {"data": {}})
+        callback.assert_called_once_with(
+            QuerySentinelProductsResponse(400, {"data": {}}, None)
+        )
 
     def test_when_on_failure_call_then_returns_response(self):
         callback = Mock()
@@ -166,7 +128,7 @@ class TestQuerySentinelProductsResponse:
 
         QuerySentinelProductsResponse(200, {"data": {}}).on_success(
             correct_cb
-        ).on_error(incorrect_cb).on_failure(incorrect_cb)
+        ).on_failure(incorrect_cb)
 
         correct_cb.assert_called_once()
         incorrect_cb.assert_not_called()
@@ -179,7 +141,7 @@ class TestQuerySentinelProductsResponse:
 
         QuerySentinelProductsResponse(200, None, error).on_success(
             incorrect_cb
-        ).on_error(correct_cb).on_failure(incorrect_cb)
+        ).on_failure(correct_cb)
 
         correct_cb.assert_called_once()
         incorrect_cb.assert_not_called()
@@ -190,7 +152,7 @@ class TestQuerySentinelProductsResponse:
 
         QuerySentinelProductsResponse(400, None, None).on_success(
             incorrect_cb
-        ).on_error(incorrect_cb).on_failure(correct_cb)
+        ).on_failure(correct_cb)
 
         correct_cb.assert_called_once()
         incorrect_cb.assert_not_called()
@@ -201,7 +163,7 @@ class TestQuerySentinelProductsResponse:
 
         QuerySentinelProductsResponse(400, None, ValueError).on_success(
             incorrect_cb
-        ).on_error(correct_cb).on_failure(incorrect_cb)
+        ).on_failure(correct_cb)
 
         correct_cb.assert_called_once()
         incorrect_cb.assert_not_called()
@@ -212,7 +174,7 @@ class TestQuerySentinelProductsResponse:
 
         QuerySentinelProductsResponse(200, None, ValueError).on_success(
             incorrect_cb
-        ).on_error(correct_cb).on_failure(incorrect_cb)
+        ).on_failure(correct_cb)
 
         correct_cb.assert_called_once()
         incorrect_cb.assert_not_called()

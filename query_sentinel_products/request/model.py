@@ -1,11 +1,15 @@
 from collections import namedtuple
 from enum import Enum
-from typing import Union
+from typing import Union, NamedTuple, Optional
 
-SentinelProductRequest = namedtuple(
-    "SentinelProductRequest",
-    ["query", "rows", "order_by", "start", "username", "password"],
-)
+
+class SentinelProductRequest(NamedTuple):
+    query: str
+    rows: int
+    order_by: Optional[str]
+    start: int
+    username: str
+    password: str
 
 
 class PlatformName(Enum):

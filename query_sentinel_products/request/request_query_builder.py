@@ -22,7 +22,7 @@ from .validate_query_builder_args import (
 from .value_formatters import format_footprint, format_number_or_range
 
 
-def range_value(start_val: str, end_value) -> str:
+def range_value(start_val: str, end_value: str) -> str:
     """Helper function to create a Sentinel API compliant range for fields such
      as orbit_number etc."""
     return f"[{start_val} TO {end_value}]"
@@ -153,7 +153,8 @@ class RequestQueryBuilder:
     def end_position(
         self, end_position_start: str, end_position_end: str
     ) -> "RequestQueryBuilder":
-        """Sets a filter on the end position date ranges
+        """Set a filter on the range for endposition (that is Sensing Stop Time) 
+        that the query is interested in.
 
         Args:
             end_position_start::str
@@ -207,7 +208,8 @@ class RequestQueryBuilder:
         )
 
     def collection(self, collection: str) -> "RequestQueryBuilder":
-        """Sets a filter on the collection
+        """Sets a filter on the collection. Used to specify the name 
+        of a predefined collection of products
 
         Args:
             collection::str
@@ -224,7 +226,7 @@ class RequestQueryBuilder:
         )
 
     def file_name(self, filename: str) -> "RequestQueryBuilder":
-        """Sets a filter on filename
+        """Sets a filter on product filename.
 
         Args:
             filename::str
@@ -241,12 +243,15 @@ class RequestQueryBuilder:
         )
 
     def footprint(self, geographic_type: str) -> "RequestQueryBuilder":
-        """Sets a filter on footprint - i.e. Area Of Interest
+        """Sets a filter on geographic area that the query is interested in. Can use 
+        either a simple bounding box described as a WKT Polygon or a point described 
+        by a `Latitude` `Longitude` pair. Refer to the Sentinel Hub documentation for
+        in depth information about footprint.
 
         Args:
               geographic_type::str
-                The Area of Interest for the query. Can either be a point (long/lat
-                pair e.g. "0.000 1.000") or a Polygon (WKT polygon without cut outs,
+                The Area of Interest for the query. Can either be a point (lat/lon
+                pair e.g. "0.000, 1.000") or a Polygon (WKT polygon without cut outs,
                 e.g. POLYGON ((30 10, 40 40, 20 40, 10 20, 30 10)))
 
                 Can have the Intersects() or can be just the coordinate pair or Polygon
@@ -331,7 +336,11 @@ class RequestQueryBuilder:
     def last_relative_orbit_number(
         self, orbit_number: Union[int, str]
     ) -> "RequestQueryBuilder":
-        """Sets query for last relative orbit number
+        """Sets a filter on the last orbit number or range range of last orbit 
+        numbers (i.e `[MIN TO MAX]` whereby MIN is the lowest last orbit number 
+        and MAX is highest). Relative orbit number of the oldest line within the image
+        data (the start of the product) and relative orbit number of the most recent 
+        line within the image data (the end of the product), respectively.
 
         Args:
             orbit_number::Union[int, str]
@@ -352,7 +361,7 @@ class RequestQueryBuilder:
         )
 
     def orbit_direction(self, orbit_direction: OrbitDirection) -> "RequestQueryBuilder":
-        """Set filter on orbit direction"""
+        """Sets a filter on the orbit direction for the oldest data in the product"""
         self.__add_filter(FilterKeyword.ORBIT_DIRECTION, orbit_direction.value)
         return self
 
