@@ -959,6 +959,14 @@ The enumerations are as follows:
 * Queries the Sentinel Hub for products
 * Define your requests using the `RequestQueryBuilder` and `SentinelProductRequestBuilder` objects
 
+# Development Documentation
+
+Built using Poetry.
+
+`poetry install`
+
+To install the library locally from source
+
 # Credits
 
 This package was created with Cookiecutter and the `UKHO/cookiecutter-pypackage` project template.
