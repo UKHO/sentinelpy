@@ -28,7 +28,6 @@ readme = "README.md"
 
 # Do not manually edit, use poetry add/remove (--dev) to manage dependencies
 [tool.poetry.dependencies]
-mypy = "^0.790"
 python = "^3.6"
 requests = "^2.24.0"
 
@@ -47,6 +46,7 @@ tox-gh-actions = "^2.1.0"
 tox = "^3.20.1"
 toml = "^0.10.1"
 responses = "^0.12.0"
+mypy = "^0.790"
 
 [tool.pytest.ini_options]
 addopts = "--cov=query_sentinel_products --cov-fail-under=95"

@@ -1,5 +1,6 @@
 """Main module."""
 import logging
+from typing import Optional
 
 import requests
 
@@ -17,7 +18,7 @@ def query_sentinel_hub(
     sentinel_product_request: SentinelProductRequest,
     *,
     log_level: int = logging.INFO,
-    logger: logging.Logger = logging.getLogger(__name__)
+    logger: Optional[logging.Logger] = None
 ) -> QuerySentinelProductsResponse:
     """Queries the Sentinel Hub for the information in the request.
 
@@ -28,13 +29,15 @@ def query_sentinel_hub(
         log_level::int
             Level of logs to print
 
-        logger::logging.Logger
-            Logger to log information and error message
+        logger::Optional[logging.Logger]
+            Logger to log information and error message defaults to None
 
     Returns:
         result::QuerySentinelProductsResponse
             Result of the query
     """
+    if logger is None:
+        logger = logging.getLogger(__name__)
     logger.setLevel(log_level)
     try:
         response = __call_api(sentinel_product_request, logger)
