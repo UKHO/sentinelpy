@@ -4,12 +4,13 @@ from typing import Any, Optional
 
 DATE_TIME_PATTERN = re.compile(r"^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}\.\d{3}Z$")
 RELATIVE_DATE_PATTERN = re.compile(r"^NOW(?:-\d+(?:MINUTE|HOUR|DAY|MONTH)S?)?$")
+INTERSECTS_PATTERN = re.compile(r"^\"Intersects\((?s).*")
 POLYGON_PATTERN = re.compile(
-    r"^\"Intersects\(POLYGON\s*\(\((\s*-?\d{1,3}\.?\d* -?\d{1,2}\.?\d*,?){3,}\)\)\)\"$"
+    r".*POLYGON\s*\(\((\s*-?\d{1,3}\.?\d* -?\d{1,2}\.?\d*,?){3,}\)\)\)\"$", re.IGNORECASE
 )
 POINT_PATTERN = re.compile(
     (
-        r"^\"Intersects\(-?([1]?[1-7][1-9]|[1]?[1-8][0]|[1-9]?[0-9])\.?\d*,"
+        r".*-?([1]?[1-7][1-9]|[1]?[1-8][0]|[1-9]?[0-9])\.?\d*,"
         r"\s*-?[0-9]{1,2}\.?\d*\)\"$"
     )
 )
@@ -60,9 +61,15 @@ def geometry_type_validator(str_val: str) -> Optional[str]:
             Validated string value - if value present the value is valid
             if not present, the value is not validated
     """
+    has_intersects = INTERSECTS_PATTERN.match(str_val) is not None
     is_polygon = POLYGON_PATTERN.match(str_val) is not None
     is_point = POINT_PATTERN.match(str_val) is not None
-    return str_val if is_point or is_polygon else None
+
+    is_valid_geom = has_intersects and (is_point or is_polygon)
+
+    print(f"{has_intersects} {is_polygon} {is_point}")
+
+    return str_val if is_valid_geom else None
 
 
 def orbit_number_validator(orbit_number: str) -> Optional[str]:
