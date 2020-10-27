@@ -5,12 +5,12 @@ __email__ = "datascienceandengineering@ukho.gov.uk"
 __version__ = "0.1.0"
 
 from .main import query_sentinel_hub  # noqa: F401
-from .query_sentinel_products_response import (
+from .query_sentinel_products_response import (  # noqa: F401
     QuerySentinelProductsResponse,
-)  # noqa: F401
-from .request.model import (
+)
+from .request.model import (  # noqa: F401
     OrbitDirection,
-    PlatformName,  # noqa: F401
+    PlatformName,
     PolarisationMode,
     ProductType,
     SensorOperationalMode,
@@ -22,10 +22,10 @@ from .request.model import (
     SwathIdentifier,
     Timeliness,
 )
-from .request.request_query_builder import (
-    RequestQueryBuilder,  # noqa: F401
+from .request.request_query_builder import (  # noqa: F401
+    RequestQueryBuilder,
     range_value,
 )
-from .request.sentinel_product_request_builder import (
+from .request.sentinel_product_request_builder import (  # noqa: F401
     SentinelProductRequestBuilder,
-)  # noqa: F401
+)
