@@ -55,6 +55,10 @@ print(result.error)
 
     Level for which to log at use `logging` to define correct level, defaults to 'INFO'.
 
+* `logger` (_logging.Logger_)
+
+    Logger to use to log messages with, defaults to `logging.getLogger(__name__)` if no value supplied
+
 **Returns:** _[QuerySentinelProductsResponse](#QuerySentinelProductsResponse)_ object
 
 ## API Documentation

@@ -14,7 +14,10 @@ __SENTINEL_HUB_URL_PATTERN = (
 
 
 def query_sentinel_hub(
-    sentinel_product_request: SentinelProductRequest, *, log_level: int = logging.INFO
+    sentinel_product_request: SentinelProductRequest,
+    *,
+    log_level: int = logging.INFO,
+    logger: logging.Logger = logging.getLogger(__name__)
 ) -> QuerySentinelProductsResponse:
     """Queries the Sentinel Hub for the information in the request.
 
@@ -25,11 +28,13 @@ def query_sentinel_hub(
         log_level::int
             Level of logs to print
 
+        logger::logging.Logger
+            Logger to log information and error message
+
     Returns:
         result::QuerySentinelProductsResponse
             Result of the query
     """
-    logger = logging.getLogger(__name__)
     logger.setLevel(log_level)
     try:
         response = __call_api(sentinel_product_request, logger)
