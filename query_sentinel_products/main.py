@@ -18,7 +18,7 @@ def query_sentinel_hub(
     sentinel_product_request: SentinelProductRequest,
     *,
     log_level: int = logging.INFO,
-    logger: Optional[logging.Logger] = None
+    logger: Optional[logging.Logger] = None,
 ) -> QuerySentinelProductsResponse:
     """Queries the Sentinel Hub for the information in the request.
 

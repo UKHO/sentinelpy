@@ -96,7 +96,6 @@ class TestValidateQueryBuilderArgs:
             '"Intersects(polygon ((30 10, 40 40, 20 40, 10 20, 30 10)))"'
         )
 
-
     def test_when_geometry_type_validator_polygon_without_intersects_then_returns_none(
         self,
     ):
