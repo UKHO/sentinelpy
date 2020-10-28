@@ -10,7 +10,7 @@ from .request.model import SentinelProductRequest
 
 __SENTINEL_HUB_URL_PATTERN = (
     "https://scihub.copernicus.eu/dhus/search?q={query}"
-    "&rows={rows}&start={start}{additional_params}&format=json"
+    "&start={start}{additional_params}&format=json"
 )
 
 
@@ -74,14 +74,15 @@ def __read_response(response: requests.Response) -> QuerySentinelProductsRespons
 
 
 def __build_url(sentinel_product_request: SentinelProductRequest) -> str:
-    additional_params = (
-        ""
-        if sentinel_product_request.order_by is None
-        else f"&orderby={sentinel_product_request.order_by}"
-    )
+    additional_params = []
+    if sentinel_product_request.rows is not None:
+        additional_params.append(f"&rows={sentinel_product_request.rows}")
+
+    if sentinel_product_request.order_by is not None:
+        additional_params.append(f"&orderby={sentinel_product_request.order_by}")
+
     return __SENTINEL_HUB_URL_PATTERN.format(
         query=sentinel_product_request.query,
-        rows=sentinel_product_request.rows,
         start=sentinel_product_request.start,
-        additional_params=additional_params,
+        additional_params="".join(additional_params),
     )

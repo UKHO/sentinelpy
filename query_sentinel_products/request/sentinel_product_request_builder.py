@@ -11,7 +11,7 @@ class SentinelProductRequestBuilder:
     def __init__(
         self,
         default_query: str = "*",
-        default_rows: int = 30,
+        default_rows: Optional[int] = None,
         default_order_by: Optional[str] = None,
         default_start: int = 0,
     ):

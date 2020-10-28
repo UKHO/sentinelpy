@@ -25,6 +25,9 @@ class TestQuerySentinelHub:
         self.sentinel_product_request = SentinelProductRequest(
             "*", 30, None, 0, "test-user", "test-password"
         )
+        self.sentinel_product_request_no_rows = SentinelProductRequest(
+            "*", None, None, 0, "test-user", "test-password"
+        )
         self.ordered_sentinel_product_request = SentinelProductRequest(
             "*", 30, "beginposition asc", 0, "test-user", "test-password"
         )
@@ -44,7 +47,7 @@ class TestQuerySentinelHub:
 
     def test_when_query_called_then_calls_are_authenticated(self):
         expected_url = (
-            "https://scihub.copernicus.eu/dhus/search?q=*&rows=30&start=0&format=json"
+            "https://scihub.copernicus.eu/dhus/search?q=*&start=0&rows=30&format=json"
         )
         expected_auth = (
             self.sentinel_product_request.username,
@@ -59,7 +62,7 @@ class TestQuerySentinelHub:
 
     def test_when_query_called_without_ordering_then_calls_correct_url(self):
         expected_url = (
-            "https://scihub.copernicus.eu/dhus/search?q=*&rows=30&start=0&format=json"
+            "https://scihub.copernicus.eu/dhus/search?q=*&start=0&rows=30&format=json"
         )
         expected_auth = (
             self.sentinel_product_request.username,
@@ -72,10 +75,25 @@ class TestQuerySentinelHub:
             [call(expected_url, auth=expected_auth)]
         )
 
+    def test_when_query_called_without_rows_then_calls_correct_url(self):
+        expected_url = (
+            "https://scihub.copernicus.eu/dhus/search?q=*&start=0&format=json"
+        )
+        expected_auth = (
+            self.sentinel_product_request.username,
+            self.sentinel_product_request.password,
+        )
+
+        query_sentinel_hub(self.sentinel_product_request_no_rows)
+
+        self.requests_mock.get.assert_has_calls(
+            [call(expected_url, auth=expected_auth)]
+        )
+
     def test_when_query_called_with_ordering_then_calls_correct_url(self):
         expected_url = (
             "https://scihub.copernicus.eu/dhus/search?q=*&"
-            "rows=30&start=0&orderby=beginposition asc&format=json"
+            "start=0&rows=30&orderby=beginposition asc&format=json"
         )
         expected_auth = (
             self.sentinel_product_request.username,
@@ -92,7 +110,7 @@ class TestQuerySentinelHub:
         expected_url = (
             "https://scihub.copernicus.eu/dhus/search?"
             "q=platformname:Sentinel-1 AND cloudcoverpercentage:5"
-            "&rows=30&start=0&format=json"
+            "&start=0&rows=30&format=json"
         )
         expected_auth = (
             self.sentinel_product_request.username,
