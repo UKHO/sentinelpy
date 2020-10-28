@@ -67,8 +67,6 @@ def geometry_type_validator(str_val: str) -> Optional[str]:
 
     is_valid_geom = has_intersects and (is_point or is_polygon)
 
-    print(f"{has_intersects} {is_polygon} {is_point}")
-
     return str_val if is_valid_geom else None
 
 
