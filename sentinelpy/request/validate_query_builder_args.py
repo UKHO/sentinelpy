@@ -4,10 +4,9 @@ from typing import Any, Optional
 
 DATE_TIME_PATTERN = re.compile(r"^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}\.\d{3}Z$")
 RELATIVE_DATE_PATTERN = re.compile(r"^NOW(?:-\d+(?:MINUTE|HOUR|DAY|MONTH)S?)?$")
-INTERSECTS_PATTERN = re.compile(r"^\"Intersects\((?s).*")
+INTERSECTS_PATTERN = re.compile(r"(?s)^\"Intersects\(.*")
 POLYGON_PATTERN = re.compile(
-    r".*POLYGON\s*\(\((\s*-?\d{1,3}\.?\d* -?\d{1,2}\.?\d*,?){3,}\)\)\)\"$",
-    re.IGNORECASE,
+    r"(?si).*POLYGON\s*\(\((\s*-?\d{1,3}\.?\d* -?\d{1,2}\.?\d*,?){3,}\)\)\)\"$"
 )
 POINT_PATTERN = re.compile(
     (

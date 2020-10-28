@@ -1,7 +1,7 @@
-# query_sentinel_products
+# sentinelpy
 
-![Python Package](https://github.com/UKHO/query_sentinel_products/workflows/Python%20Package/badge.svg?branch=main)
-[![Dependabot Status](https://api.dependabot.com/badges/status?host=github&repo=UKHO/query_sentinel_products&identifier=304287716)](https://dependabot.com)
+![Python Package](https://github.com/UKHO/sentinelpy/workflows/Python%20Package/badge.svg?branch=main)
+[![Dependabot Status](https://api.dependabot.com/badges/status?host=github&repo=UKHO/sentinelpy&identifier=304287716)](https://dependabot.com)
 
 Queries ESA Sentinel APIs for products
 
@@ -14,7 +14,7 @@ Queries ESA Sentinel APIs for products
 ```python
 import logging
 
-from query_sentinel_products import (
+from sentinelpy import (
     query_sentinel_hub,
     SentinelProductRequestBuilder,
     RequestQueryBuilder,
@@ -85,7 +85,7 @@ A helper function for defining range values for queries using the `RequestQueryB
 #### Example
 
 ```python
-from query_sentinel_products import (
+from sentinelpy import (
     RequestQueryBuilder,
     range_value
 )
@@ -233,7 +233,7 @@ Sets the start value
 <p>
 
 ```python
-from query_sentinel_products import (
+from sentinelpy import (
     SentinelProductRequestBuilder,
     SentinelProductRequest,
     RequestQueryBuilder,
@@ -373,7 +373,7 @@ before.
 **Example**
 
 ```python
-from query_sentinel_products import (
+from sentinelpy import (
     RequestQueryBuilder,
     PlatformName,
     PolarisationMode
@@ -885,7 +885,7 @@ was not successful.
 <p>
 
 ```python
-from query_sentinel_products import QuerySentinelProductsResponse
+from sentinelpy import QuerySentinelProductsResponse
 
 # You can use the attributes of the response in a more object fashion
 # Successful response:

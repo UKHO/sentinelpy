@@ -5,16 +5,14 @@ import pytest
 import requests
 from assertpy import assert_that
 
-from query_sentinel_products import SentinelProductRequest, query_sentinel_hub
-from query_sentinel_products.exceptions import QuerySentinelProductsError
-from query_sentinel_products.query_sentinel_products_response import (
-    QuerySentinelProductsResponse,
-)
+from sentinelpy import SentinelProductRequest, query_sentinel_hub
+from sentinelpy.exceptions import QuerySentinelProductsError
+from sentinelpy.query_sentinel_products_response import QuerySentinelProductsResponse
 
 
 @pytest.fixture()
 def requests_mock():
-    with patch("query_sentinel_products.main.requests") as mock:
+    with patch("sentinelpy.main.requests") as mock:
         yield mock
 
 
@@ -169,7 +167,7 @@ class TestQuerySentinelHub:
             )
         )
 
-    @patch("query_sentinel_products.main.logging")
+    @patch("sentinelpy.main.logging")
     def test_when_query_sentinel_hub_called_then_it_logs_at_the_set_log_level(
         self, logging_mock
     ):

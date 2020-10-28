@@ -1,6 +1,6 @@
 from assertpy import assert_that, soft_assertions
 
-from query_sentinel_products.request.validate_query_builder_args import (
+from sentinelpy.request.validate_query_builder_args import (
     cloud_coverage_percentage_validator,
     date_value_validator,
     geometry_type_validator,

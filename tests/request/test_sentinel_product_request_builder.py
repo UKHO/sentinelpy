@@ -1,6 +1,6 @@
 from assertpy import assert_that
 
-from query_sentinel_products import (
+from sentinelpy import (
     PlatformName,
     RequestQueryBuilder,
     SentinelProductRequest,

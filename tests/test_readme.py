@@ -1,7 +1,7 @@
 import logging
 from unittest.mock import patch
 
-from query_sentinel_products import (
+from sentinelpy import (
     PlatformName,
     PolarisationMode,
     QuerySentinelProductsResponse,
@@ -15,7 +15,7 @@ from query_sentinel_products import (
 
 class TestReadme:
     @patch(
-        "query_sentinel_products.main.query_sentinel_hub",
+        "sentinelpy.main.query_sentinel_hub",
         returnvalue=QuerySentinelProductsResponse(status_code=200, body={}),
     )
     def test_usage_example(self, query_sentinel_hub_mock):

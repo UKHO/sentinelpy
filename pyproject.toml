@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "query_sentinel_products"
+name = "sentinelpy"
 version = "0.1.0"
 authors = [
     "UK Hydrographic Office <datascienceandengineering@ukho.gov.uk>"
@@ -21,8 +21,8 @@ classifiers = [
     "Programming Language :: Python :: 3.8"
 ]
 
-homepage = "https://github.com/UKHO/query_sentinel_products"
-repository = "https://github.com/UKHO/query_sentinel_products"
+homepage = "https://github.com/UKHO/sentinelpy"
+repository = "https://github.com/UKHO/sentinelpy"
 
 readme = "README.md"
 
@@ -49,7 +49,7 @@ responses = "^0.12.0"
 mypy = "^0.790"
 
 [tool.pytest.ini_options]
-addopts = "--cov=query_sentinel_products --cov-fail-under=95"
+addopts = "--cov=sentinelpy --cov-fail-under=95"
 
 [build-system]
 requires = ["poetry>=0.12"]

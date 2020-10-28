@@ -7,7 +7,7 @@ import requests
 import responses
 from assertpy import assert_that
 
-from query_sentinel_products import (
+from sentinelpy import (
     PlatformName,
     RequestQueryBuilder,
     Sentinel1ProductType,

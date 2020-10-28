@@ -1,4 +1,4 @@
-"""Top-level package for query_sentinel_products."""
+"""Top-level package for sentinelpy."""
 
 __author__ = """UK Hydrographic Office"""
 __email__ = "datascienceandengineering@ukho.gov.uk"
