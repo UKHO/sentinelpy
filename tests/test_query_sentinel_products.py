@@ -23,7 +23,7 @@ class TestQuerySentinelProducts:
     def test_when_successful_request_made_then_returns_products(self):
         expected_url = (
             "https://scihub.copernicus.eu/dhus/search?q=platformname:Sentinel-1%20"
-            "AND%20producttype:GRD&rows=30&start=0&format=json"
+            "AND%20producttype:GRD&start=0&rows=30&format=json"
         )
 
         with open(f"{DATA_DIR}/sentinel.api.json", "r") as sentinel_data:
@@ -64,7 +64,7 @@ class TestQuerySentinelProducts:
             "https://scihub.copernicus.eu/dhus/search?q=platformname:Sentinel-1"
             "%20AND%20producttype:GRD%20AND%20NOT%20(cloudcoverpercentage:"
             "%5B5%20TO%2010%5D%20OR%20cloudcoverpercentage:%5B45%20TO%2050%5D)"
-            "&rows=30&start=0&format=json"
+            "&start=0&rows=30&format=json"
         )
 
         responses.add(

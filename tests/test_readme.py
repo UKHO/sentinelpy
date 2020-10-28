@@ -82,7 +82,7 @@ class TestReadme:
 
         assert minimal == SentinelProductRequest(
             query="*",
-            rows=30,
+            rows=None,
             order_by=None,
             start=0,
             username="username",
