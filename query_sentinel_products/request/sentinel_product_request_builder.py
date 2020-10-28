@@ -19,7 +19,7 @@ class SentinelProductRequestBuilder:
         self.__password: Optional[str] = None
         self.__order_by: Optional[str] = default_order_by
         self.__query: Union[str, RequestQueryBuilder] = default_query
-        self.__rows: int = default_rows
+        self.__rows: Optional[int] = default_rows
         self.__start: int = default_start
 
     def with_username(self, username: str) -> "SentinelProductRequestBuilder":
