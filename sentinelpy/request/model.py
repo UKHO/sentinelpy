@@ -4,7 +4,7 @@ from typing import NamedTuple, Optional, Union
 
 class SentinelProductRequest(NamedTuple):
     query: str
-    rows: int
+    rows: Optional[int]
     order_by: Optional[str]
     start: int
     username: str

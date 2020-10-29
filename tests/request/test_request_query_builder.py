@@ -2,7 +2,7 @@ from unittest.mock import Mock, call, patch
 
 from assertpy import assert_that
 
-from query_sentinel_products import (
+from sentinelpy import (
     OrbitDirection,
     PlatformName,
     PolarisationMode,
@@ -42,7 +42,7 @@ class TestRequestQueryBuilder:
             "beginposition:[2020-01-01T00:00:00.000Z TO 2020-02-01T00:00:00.000Z]"
         )
 
-    @patch("query_sentinel_products.request.request_query_builder.date_value_validator")
+    @patch("sentinelpy.request.request_query_builder.date_value_validator")
     def test_when_begin_position_supplied_then_validates_both_start_and_end_date(
         self, date_value_validator_mock
     ):
@@ -77,7 +77,7 @@ class TestRequestQueryBuilder:
             "endposition:[2020-03-01T00:00:00.000Z TO 2020-04-01T00:00:00.000Z]"
         )
 
-    @patch("query_sentinel_products.request.request_query_builder.date_value_validator")
+    @patch("sentinelpy.request.request_query_builder.date_value_validator")
     def test_when_end_position_supplied_then_validates_both_start_and_end_date(
         self, date_value_validator_mock
     ):
@@ -112,7 +112,7 @@ class TestRequestQueryBuilder:
             "ingestiondate:[2020-05-01T00:00:00.000Z TO 2020-06-01T00:00:00.000Z]"
         )
 
-    @patch("query_sentinel_products.request.request_query_builder.date_value_validator")
+    @patch("sentinelpy.request.request_query_builder.date_value_validator")
     def test_when_ingestion_date_supplied_then_validates_both_start_and_end_date(
         self, date_value_validator_mock
     ):
@@ -143,12 +143,7 @@ class TestRequestQueryBuilder:
 
         assert_that(builder.build()).is_equal_to("collection:CollectionA")
 
-    @patch(
-        (
-            "query_sentinel_products.request.request_query_builder."
-            "string_not_empty_validator"
-        )
-    )
+    @patch(("sentinelpy.request.request_query_builder." "string_not_empty_validator"))
     def test_when_collection_supplied_then_validates_collection(
         self, string_not_empty_validator_mock
     ):
@@ -170,12 +165,7 @@ class TestRequestQueryBuilder:
 
         assert_that(builder.build()).is_equal_to("filename:filename13")
 
-    @patch(
-        (
-            "query_sentinel_products.request.request_query_builder."
-            "string_not_empty_validator"
-        )
-    )
+    @patch(("sentinelpy.request.request_query_builder." "string_not_empty_validator"))
     def test_when_file_name_supplied_then_validates_supplied_value(
         self, string_not_empty_validator_mock
     ):
@@ -197,9 +187,7 @@ class TestRequestQueryBuilder:
 
         assert_that(builder.build()).is_equal_to('footprint:"Intersects(0, 0)"')
 
-    @patch(
-        "query_sentinel_products.request.request_query_builder.geometry_type_validator"
-    )
+    @patch("sentinelpy.request.request_query_builder.geometry_type_validator")
     def test_when_footprint_supplied_then_validates_supplied_footprint(
         self, geometry_type_validator_mock
     ):
@@ -209,7 +197,7 @@ class TestRequestQueryBuilder:
 
         geometry_type_validator_mock.assert_called_once_with('"Intersects(1 1)"')
 
-    @patch("query_sentinel_products.request.request_query_builder.format_footprint")
+    @patch("sentinelpy.request.request_query_builder.format_footprint")
     def test_when_footprint_supplied_then_formats_matches_api_format(
         self, format_footprint_mock
     ):
@@ -240,9 +228,7 @@ class TestRequestQueryBuilder:
 
         assert_that(builder.build()).is_equal_to("orbitnumber:[1234 TO 12345]")
 
-    @patch(
-        "query_sentinel_products.request.request_query_builder.orbit_number_validator"
-    )
+    @patch("sentinelpy.request.request_query_builder.orbit_number_validator")
     def test_when_orbit_number_supplied_then_validates_value(
         self, orbit_number_validator_mock
     ):
@@ -252,9 +238,7 @@ class TestRequestQueryBuilder:
 
         orbit_number_validator_mock.assert_called_once_with("123")
 
-    @patch(
-        "query_sentinel_products.request.request_query_builder.format_number_or_range"
-    )
+    @patch("sentinelpy.request.request_query_builder.format_number_or_range")
     def test_when_orbit_number_supplied_then_formats_value(
         self, format_orbit_number_mock
     ):
@@ -287,9 +271,7 @@ class TestRequestQueryBuilder:
 
         assert_that(builder.build()).is_equal_to("lastorbitnumber:[1234 TO 12345]")
 
-    @patch(
-        "query_sentinel_products.request.request_query_builder.orbit_number_validator"
-    )
+    @patch("sentinelpy.request.request_query_builder.orbit_number_validator")
     def test_when_last_orbit_number_supplied_then_validates_value_supplied(
         self, orbit_number_validator_mock
     ):
@@ -299,9 +281,7 @@ class TestRequestQueryBuilder:
 
         orbit_number_validator_mock.assert_called_once_with("1234")
 
-    @patch(
-        "query_sentinel_products.request.request_query_builder.format_number_or_range"
-    )
+    @patch("sentinelpy.request.request_query_builder.format_number_or_range")
     def test_when_last_orbit_number_supplied_then_formats_compatible_with_api(
         self, format_orbit_number_mock
     ):
@@ -337,10 +317,7 @@ class TestRequestQueryBuilder:
         assert_that(builder.build()).is_equal_to("relativeorbitnumber:[1 TO 150]")
 
     @patch(
-        (
-            "query_sentinel_products.request.request_query_builder."
-            "relative_orbit_number_validator"
-        )
+        ("sentinelpy.request.request_query_builder." "relative_orbit_number_validator")
     )
     def test_when_relative_orbit_number_supplied_then_validates_value_supplied(
         self, relative_orbit_number_validator_mock
@@ -351,9 +328,7 @@ class TestRequestQueryBuilder:
 
         relative_orbit_number_validator_mock.assert_called_once_with("1")
 
-    @patch(
-        "query_sentinel_products.request.request_query_builder.format_number_or_range"
-    )
+    @patch("sentinelpy.request.request_query_builder.format_number_or_range")
     def test_when_relative_orbit_number_supplied_then_formats__compatible_with_api(
         self, format_orbit_number_mock
     ):
@@ -389,10 +364,7 @@ class TestRequestQueryBuilder:
         assert_that(builder.build()).is_equal_to("lastrelativeorbitnumber:[123 TO 124]")
 
     @patch(
-        (
-            "query_sentinel_products.request.request_query_builder."
-            "relative_orbit_number_validator"
-        )
+        ("sentinelpy.request.request_query_builder." "relative_orbit_number_validator")
     )
     def test_when_relative_last_orbit_number_supplied_then_validates_value_supplied(
         self, relative_orbit_number_validator_mock
@@ -403,9 +375,7 @@ class TestRequestQueryBuilder:
 
         relative_orbit_number_validator_mock.assert_called_once_with("123")
 
-    @patch(
-        "query_sentinel_products.request.request_query_builder.format_number_or_range"
-    )
+    @patch("sentinelpy.request.request_query_builder.format_number_or_range")
     def test_when_relative_last_orbit_number_supplied_then_value_compatible_with_api(
         self, format_orbit_number_mock
     ):
@@ -467,7 +437,7 @@ class TestRequestQueryBuilder:
 
     @patch(
         (
-            "query_sentinel_products.request.request_query_builder."
+            "sentinelpy.request.request_query_builder."
             "cloud_coverage_percentage_validator"
         )
     )
@@ -480,9 +450,7 @@ class TestRequestQueryBuilder:
 
         cloud_coverage_percentage_validator_mock.assert_called_once_with("100")
 
-    @patch(
-        "query_sentinel_products.request.request_query_builder.format_number_or_range"
-    )
+    @patch("sentinelpy.request.request_query_builder.format_number_or_range")
     def test_when_cloud_cover_percentage_supplied_then_formats_value_supplied(
         self, format_number_or_range_mock
     ):

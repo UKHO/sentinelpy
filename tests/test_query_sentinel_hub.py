@@ -5,16 +5,14 @@ import pytest
 import requests
 from assertpy import assert_that
 
-from query_sentinel_products import SentinelProductRequest, query_sentinel_hub
-from query_sentinel_products.exceptions import QuerySentinelProductsError
-from query_sentinel_products.query_sentinel_products_response import (
-    QuerySentinelProductsResponse,
-)
+from sentinelpy import SentinelProductRequest, query_sentinel_hub
+from sentinelpy.exceptions import QuerySentinelProductsError
+from sentinelpy.query_sentinel_products_response import QuerySentinelProductsResponse
 
 
 @pytest.fixture()
 def requests_mock():
-    with patch("query_sentinel_products.main.requests") as mock:
+    with patch("sentinelpy.main.requests") as mock:
         yield mock
 
 
@@ -24,6 +22,9 @@ class TestQuerySentinelHub:
         self.requests_mock = requests_mock
         self.sentinel_product_request = SentinelProductRequest(
             "*", 30, None, 0, "test-user", "test-password"
+        )
+        self.sentinel_product_request_no_rows = SentinelProductRequest(
+            "*", None, None, 0, "test-user", "test-password"
         )
         self.ordered_sentinel_product_request = SentinelProductRequest(
             "*", 30, "beginposition asc", 0, "test-user", "test-password"
@@ -44,7 +45,7 @@ class TestQuerySentinelHub:
 
     def test_when_query_called_then_calls_are_authenticated(self):
         expected_url = (
-            "https://scihub.copernicus.eu/dhus/search?q=*&rows=30&start=0&format=json"
+            "https://scihub.copernicus.eu/dhus/search?q=*&start=0&rows=30&format=json"
         )
         expected_auth = (
             self.sentinel_product_request.username,
@@ -59,7 +60,7 @@ class TestQuerySentinelHub:
 
     def test_when_query_called_without_ordering_then_calls_correct_url(self):
         expected_url = (
-            "https://scihub.copernicus.eu/dhus/search?q=*&rows=30&start=0&format=json"
+            "https://scihub.copernicus.eu/dhus/search?q=*&start=0&rows=30&format=json"
         )
         expected_auth = (
             self.sentinel_product_request.username,
@@ -72,10 +73,25 @@ class TestQuerySentinelHub:
             [call(expected_url, auth=expected_auth)]
         )
 
+    def test_when_query_called_without_rows_then_calls_correct_url(self):
+        expected_url = (
+            "https://scihub.copernicus.eu/dhus/search?q=*&start=0&format=json"
+        )
+        expected_auth = (
+            self.sentinel_product_request.username,
+            self.sentinel_product_request.password,
+        )
+
+        query_sentinel_hub(self.sentinel_product_request_no_rows)
+
+        self.requests_mock.get.assert_has_calls(
+            [call(expected_url, auth=expected_auth)]
+        )
+
     def test_when_query_called_with_ordering_then_calls_correct_url(self):
         expected_url = (
             "https://scihub.copernicus.eu/dhus/search?q=*&"
-            "rows=30&start=0&orderby=beginposition asc&format=json"
+            "start=0&rows=30&orderby=beginposition asc&format=json"
         )
         expected_auth = (
             self.sentinel_product_request.username,
@@ -92,7 +108,7 @@ class TestQuerySentinelHub:
         expected_url = (
             "https://scihub.copernicus.eu/dhus/search?"
             "q=platformname:Sentinel-1 AND cloudcoverpercentage:5"
-            "&rows=30&start=0&format=json"
+            "&start=0&rows=30&format=json"
         )
         expected_auth = (
             self.sentinel_product_request.username,
@@ -151,7 +167,7 @@ class TestQuerySentinelHub:
             )
         )
 
-    @patch("query_sentinel_products.main.logging")
+    @patch("sentinelpy.main.logging")
     def test_when_query_sentinel_hub_called_then_it_logs_at_the_set_log_level(
         self, logging_mock
     ):

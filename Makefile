@@ -50,19 +50,19 @@ clean-test: ## remove test and coverage artifacts
 lint: checktypes checkstyle sast checklicenses ## run all checks
 
 checktypes: .venv ## check types with mypy
-	poetry run mypy --ignore-missing-imports query_sentinel_products tests
+	poetry run mypy --ignore-missing-imports sentinelpy tests
 
 checkstyle: .venv ## check style with flake8, isort and black
-	poetry run flake8 query_sentinel_products tests
-	poetry run isort --check-only --profile black query_sentinel_products tests
-	poetry run black --check --diff query_sentinel_products tests
+	poetry run flake8 sentinelpy tests
+	poetry run isort --check-only --profile black sentinelpy tests
+	poetry run black --check --diff sentinelpy tests
 
 fixstyle: .venv ## fix black and isort style violations
-	poetry run isort --profile black query_sentinel_products tests
-	poetry run black query_sentinel_products tests
+	poetry run isort --profile black sentinelpy tests
+	poetry run black sentinelpy tests
 
 sast: .venv ## run static application security testing
-	poetry run bandit -r query_sentinel_products
+	poetry run bandit -r sentinelpy
 
 checklicenses: .venv requirements.txt ## check dependencies meet license rules
 	poetry run liccheck -s liccheck.ini
@@ -74,7 +74,7 @@ test-all: .venv ## run tests on every Python version with tox
 	poetry run tox
 
 coverage: ## check code coverage quickly with the default Python
-	poetry run coverage run --source query_sentinel_products -m pytest
+	poetry run coverage run --source sentinelpy -m pytest
 	poetry run coverage report -m
 	poetry run coverage html
 	poetry run $(BROWSER) htmlcov/index.html

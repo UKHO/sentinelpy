@@ -9,7 +9,7 @@ You can contribute in many ways:
 
 ## Report Bugs
 
-Report bugs at https://github.com/UKHO/query_sentinel_products/issues.
+Report bugs at https://github.com/UKHO/sentinelpy/issues.
 
 If you are reporting a bug, please include:
 
@@ -29,13 +29,13 @@ and "help wanted" is open to whoever wants to implement it.
 
 ## Write Documentation
 
-query_sentinel_products could always use more documentation, whether as part of the
-official query_sentinel_products docs, in docstrings, or even on the web in blog posts,
+sentinelpy could always use more documentation, whether as part of the
+official sentinelpy docs, in docstrings, or even on the web in blog posts,
 articles, and such.
 
 ## Submit Feedback
 
-The best way to send feedback is to file an issue at https://github.com/UKHO/query_sentinel_products/issues.
+The best way to send feedback is to file an issue at https://github.com/UKHO/sentinelpy/issues.
 
 If you are proposing a feature:
 
@@ -46,13 +46,13 @@ If you are proposing a feature:
 
 # Get Started!
 
-Ready to contribute? Here's how to set up `query_sentinel_products` for local development.
+Ready to contribute? Here's how to set up `sentinelpy` for local development.
 
 1. [Make sure Poetry is installed](https://python-poetry.org/docs/#installation)
-2. Fork the `query_sentinel_products` repo on GitHub.
+2. Fork the `sentinelpy` repo on GitHub.
 3. Clone your fork locally:
     ```
-    $ git clone git@github.com:your_name_here/query_sentinel_products.git
+    $ git clone git@github.com:your_name_here/sentinelpy.git
     ```
 4. Install your local copy into a virtual environment. Refer to the README for instructions on how to do this.
 5. Create a branch for local development:
@@ -88,7 +88,7 @@ Before you submit a pull request, check that it meets these guidelines:
 
 To run a subset of tests:
 ```
-$ pytest tests.test_query_sentinel_products
+$ pytest tests.test_sentinelpy
 ```
 
 To view test coverage as a html report:

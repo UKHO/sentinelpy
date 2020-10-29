@@ -1,6 +1,6 @@
 from assertpy import assert_that
 
-from query_sentinel_products import (
+from sentinelpy import (
     PlatformName,
     RequestQueryBuilder,
     SentinelProductRequest,
@@ -28,9 +28,9 @@ class TestSentinelProductRequestBuilder:
 
         assert_that(builder.build().query).is_equal_to("DEFAULT")
 
-    def test_when_no_rows_then_request_has_rows_with_default_value(self,):
+    def test_when_no_rows_then_request_has_rows_is_none(self,):
         builder = (
-            SentinelProductRequestBuilder(default_rows=200)
+            SentinelProductRequestBuilder()
             .with_query("*")
             .with_order_by("ordering")
             .with_start(10)
@@ -38,7 +38,7 @@ class TestSentinelProductRequestBuilder:
             .with_password("password")
         )
 
-        assert_that(builder.build().rows).is_equal_to(200)
+        assert_that(builder.build().rows).is_none()
 
     def test_when_no_ordering_then_request_has_ordering_with_default_value(self,):
         builder = (

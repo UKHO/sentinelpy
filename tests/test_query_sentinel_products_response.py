@@ -2,10 +2,8 @@ from unittest.mock import Mock
 
 from assertpy import assert_that, fail
 
-from query_sentinel_products.exceptions import QuerySentinelProductsError
-from query_sentinel_products.query_sentinel_products_response import (
-    QuerySentinelProductsResponse,
-)
+from sentinelpy.exceptions import QuerySentinelProductsError
+from sentinelpy.query_sentinel_products_response import QuerySentinelProductsResponse
 
 
 class TestQuerySentinelProductsResponse:

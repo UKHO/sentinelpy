@@ -1,4 +1,4 @@
-* query_sentinel_products version:
+* sentinelpy version:
 * Python version:
 * Operating System:
 

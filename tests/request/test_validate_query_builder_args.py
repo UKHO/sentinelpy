@@ -1,6 +1,6 @@
 from assertpy import assert_that, soft_assertions
 
-from query_sentinel_products.request.validate_query_builder_args import (
+from sentinelpy.request.validate_query_builder_args import (
     cloud_coverage_percentage_validator,
     date_value_validator,
     geometry_type_validator,
@@ -85,6 +85,15 @@ class TestValidateQueryBuilderArgs:
 
         assert_that(result).is_equal_to(
             '"Intersects(POLYGON ((30 10, 40 40, 20 40, 10 20, 30 10)))"'
+        )
+
+    def test_when_polygon_is_lower_case_returns_string(self):
+        result = geometry_type_validator(
+            '"Intersects(polygon ((30 10, 40 40, 20 40, 10 20, 30 10)))"'
+        )
+
+        assert_that(result).is_equal_to(
+            '"Intersects(polygon ((30 10, 40 40, 20 40, 10 20, 30 10)))"'
         )
 
     def test_when_geometry_type_validator_polygon_without_intersects_then_returns_none(

@@ -1,5 +1,6 @@
 """Main module."""
 import logging
+from typing import Optional
 
 import requests
 
@@ -9,12 +10,15 @@ from .request.model import SentinelProductRequest
 
 __SENTINEL_HUB_URL_PATTERN = (
     "https://scihub.copernicus.eu/dhus/search?q={query}"
-    "&rows={rows}&start={start}{additional_params}&format=json"
+    "&start={start}{additional_params}&format=json"
 )
 
 
 def query_sentinel_hub(
-    sentinel_product_request: SentinelProductRequest, *, log_level: int = logging.INFO
+    sentinel_product_request: SentinelProductRequest,
+    *,
+    log_level: int = logging.INFO,
+    logger: Optional[logging.Logger] = None,
 ) -> QuerySentinelProductsResponse:
     """Queries the Sentinel Hub for the information in the request.
 
@@ -25,11 +29,15 @@ def query_sentinel_hub(
         log_level::int
             Level of logs to print
 
+        logger::Optional[logging.Logger]
+            Logger to log information and error message defaults to None
+
     Returns:
         result::QuerySentinelProductsResponse
             Result of the query
     """
-    logger = logging.getLogger(__name__)
+    if logger is None:
+        logger = logging.getLogger(__name__)
     logger.setLevel(log_level)
     try:
         response = __call_api(sentinel_product_request, logger)
@@ -66,14 +74,15 @@ def __read_response(response: requests.Response) -> QuerySentinelProductsRespons
 
 
 def __build_url(sentinel_product_request: SentinelProductRequest) -> str:
-    additional_params = (
-        ""
-        if sentinel_product_request.order_by is None
-        else f"&orderby={sentinel_product_request.order_by}"
-    )
+    additional_params = []
+    if sentinel_product_request.rows is not None:
+        additional_params.append(f"&rows={sentinel_product_request.rows}")
+
+    if sentinel_product_request.order_by is not None:
+        additional_params.append(f"&orderby={sentinel_product_request.order_by}")
+
     return __SENTINEL_HUB_URL_PATTERN.format(
         query=sentinel_product_request.query,
-        rows=sentinel_product_request.rows,
         start=sentinel_product_request.start,
-        additional_params=additional_params,
+        additional_params="".join(additional_params),
     )

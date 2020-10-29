@@ -1,9 +1,6 @@
 from assertpy import assert_that
 
-from query_sentinel_products.request.value_formatters import (
-    format_footprint,
-    format_number_or_range,
-)
+from sentinelpy.request.value_formatters import format_footprint, format_number_or_range
 
 
 class TestValueFormatters:
