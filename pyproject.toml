@@ -29,7 +29,7 @@ readme = "README.md"
 # Do not manually edit, use poetry add/remove (--dev) to manage dependencies
 [tool.poetry.dependencies]
 python = "^3.6"
-requests = "^2.24.0"
+requests = "^2.25.0"
 
 [tool.poetry.dev-dependencies]
 assertpy = "^1.1"
