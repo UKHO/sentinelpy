@@ -7,7 +7,8 @@ authors = [
 description = "Queries ESA Sentinel APIs for products"
 license = "MIT license"
 keywords = [
-    "FIXME",
+    "SentinelHub",
+    "Copernicus Open Access Hub"
 ]
 classifiers = [
     "Development Status :: 3 - Alpha",
@@ -18,13 +19,18 @@ classifiers = [
     "Programming Language :: Python :: 3",
     "Programming Language :: Python :: 3.6",
     "Programming Language :: Python :: 3.7",
-    "Programming Language :: Python :: 3.8"
+    "Programming Language :: Python :: 3.8",
+    "Topic :: Scientific/Engineering :: GIS",
+    "Typing :: Typed"
 ]
 
 homepage = "https://github.com/UKHO/sentinelpy"
 repository = "https://github.com/UKHO/sentinelpy"
 
 readme = "README.md"
+
+[tool.poetry.urls]
+"Bug Tracker" = "https://github.com/UKHO/sentinelpy/issues"
 
 # Do not manually edit, use poetry add/remove (--dev) to manage dependencies
 [tool.poetry.dependencies]
