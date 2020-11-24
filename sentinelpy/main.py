@@ -9,9 +9,7 @@ from .exceptions import QuerySentinelProductsError
 from .query_sentinel_products_response import QuerySentinelProductsResponse
 from .request.model import SentinelProductRequest
 
-__SENTINEL_HUB_URL_PATTERN = (
-    "https://scihub.copernicus.eu/dhus/search?{query}"
-)
+__SENTINEL_HUB_URL_PATTERN = "https://scihub.copernicus.eu/dhus/search?{query}"
 
 
 def query_sentinel_hub(
@@ -77,7 +75,7 @@ def __build_url(sentinel_product_request: SentinelProductRequest) -> str:
     query_params = {
         "q": sentinel_product_request.query,
         "start": sentinel_product_request.start,
-        "format": "json"
+        "format": "json",
     }
 
     if sentinel_product_request.rows is not None:
@@ -86,6 +84,4 @@ def __build_url(sentinel_product_request: SentinelProductRequest) -> str:
     if sentinel_product_request.order_by is not None:
         query_params["orderby"] = sentinel_product_request.order_by
 
-    return __SENTINEL_HUB_URL_PATTERN.format(
-        query=urlencode(query_params)
-    )
+    return __SENTINEL_HUB_URL_PATTERN.format(query=urlencode(query_params))

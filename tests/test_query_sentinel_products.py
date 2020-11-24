@@ -15,6 +15,7 @@ from sentinelpy import (
     SentinelProductRequestBuilder,
     query_sentinel_hub,
 )
+from tests.utils import get_query_parameters_of_url
 
 DATA_DIR = f"{getcwd()}/tests/data" if "tests" not in getcwd() else f"{getcwd()}/data"
 
@@ -26,7 +27,7 @@ class TestQuerySentinelProducts:
             "q": ["platformname:Sentinel-1 AND producttype:GRD"],
             "start": ["0"],
             "rows": ["30"],
-            "format": ["json"]
+            "format": ["json"],
         }
 
         with open(f"{DATA_DIR}/sentinel.api.json", "r") as sentinel_data:
@@ -62,7 +63,9 @@ class TestQuerySentinelProducts:
 
         url = responses.calls[0].request.url
 
-        assert_that(parse_qs(url[url.index("?")+1:])).is_equal_to(expected_query_parameters)
+        assert_that(get_query_parameters_of_url(url)).is_equal_to(
+            expected_query_parameters
+        )
         assert_that(url).starts_with("https://scihub.copernicus.eu/dhus/search?")
 
     @responses.activate
@@ -74,7 +77,7 @@ class TestQuerySentinelProducts:
             ],
             "start": ["0"],
             "rows": ["30"],
-            "format": ["json"]
+            "format": ["json"],
         }
 
         responses.add(
@@ -112,7 +115,9 @@ class TestQuerySentinelProducts:
 
         url = responses.calls[0].request.url
 
-        assert_that(parse_qs(url[url.index("?")+1:])).is_equal_to(expected_query_parameters)
+        assert_that(get_query_parameters_of_url(url)).is_equal_to(
+            expected_query_parameters
+        )
         assert_that(url).starts_with("https://scihub.copernicus.eu/dhus/search?")
 
     @responses.activate
