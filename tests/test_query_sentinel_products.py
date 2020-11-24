@@ -2,7 +2,6 @@ import json
 import logging
 import re
 from os import getcwd
-from urllib.parse import parse_qs
 
 import requests
 import responses

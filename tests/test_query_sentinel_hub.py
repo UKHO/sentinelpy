@@ -1,6 +1,5 @@
 import logging
-from unittest.mock import call, patch
-from urllib.parse import parse_qs, parse_qsl, urlencode
+from unittest.mock import patch
 
 import pytest
 import requests
