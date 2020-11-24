@@ -17,7 +17,7 @@ jobs:
       - name: Test output
         id: test_output
         run: |
-          echo "::set-ouput name=testo::valuetesto"
+          echo "::set-output name=testo::valuetesto"
       - name: Print test output
         run: |
           echo $TEST_OUTPUT
