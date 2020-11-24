@@ -1,6 +1,7 @@
 """Main module."""
 import logging
 from typing import Optional
+from urllib.parse import urlencode
 
 import requests
 
@@ -9,8 +10,7 @@ from .query_sentinel_products_response import QuerySentinelProductsResponse
 from .request.model import SentinelProductRequest
 
 __SENTINEL_HUB_URL_PATTERN = (
-    "https://scihub.copernicus.eu/dhus/search?q={query}"
-    "&start={start}{additional_params}&format=json"
+    "https://scihub.copernicus.eu/dhus/search?{query}"
 )
 
 
@@ -74,15 +74,18 @@ def __read_response(response: requests.Response) -> QuerySentinelProductsRespons
 
 
 def __build_url(sentinel_product_request: SentinelProductRequest) -> str:
-    additional_params = []
+    query_params = {
+        "q": sentinel_product_request.query,
+        "start": sentinel_product_request.start,
+        "format": "json"
+    }
+
     if sentinel_product_request.rows is not None:
-        additional_params.append(f"&rows={sentinel_product_request.rows}")
+        query_params["rows"] = sentinel_product_request.rows
 
     if sentinel_product_request.order_by is not None:
-        additional_params.append(f"&orderby={sentinel_product_request.order_by}")
+        query_params["orderby"] = sentinel_product_request.order_by
 
     return __SENTINEL_HUB_URL_PATTERN.format(
-        query=sentinel_product_request.query,
-        start=sentinel_product_request.start,
-        additional_params="".join(additional_params),
+        query=urlencode(query_params)
     )
