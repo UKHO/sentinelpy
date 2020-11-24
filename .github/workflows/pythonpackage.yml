@@ -22,7 +22,7 @@ jobs:
         run: |
           echo $TEST_OUTPUT
         env:
-          TEST_OUTPUT: steps.test_output.outputs.testo
+          TEST_OUTPUT: "${{ steps.test_output.outputs.testo }}"
       - name: Set up Python ${{ matrix.python-version }}
         uses: actions/setup-python@v1
         with:
