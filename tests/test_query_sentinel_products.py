@@ -14,6 +14,7 @@ from sentinelpy import (
     SentinelProductRequestBuilder,
     query_sentinel_hub,
 )
+from tests.utils import get_query_parameters_of_url
 
 DATA_DIR = f"{getcwd()}/tests/data" if "tests" not in getcwd() else f"{getcwd()}/data"
 
@@ -21,10 +22,12 @@ DATA_DIR = f"{getcwd()}/tests/data" if "tests" not in getcwd() else f"{getcwd()}
 class TestQuerySentinelProducts:
     @responses.activate
     def test_when_successful_request_made_then_returns_products(self):
-        expected_url = (
-            "https://scihub.copernicus.eu/dhus/search?q=platformname:Sentinel-1%20"
-            "AND%20producttype:GRD&start=0&rows=30&format=json"
-        )
+        expected_query_parameters = {
+            "q": ["platformname:Sentinel-1 AND producttype:GRD"],
+            "start": ["0"],
+            "rows": ["30"],
+            "format": ["json"],
+        }
 
         with open(f"{DATA_DIR}/sentinel.api.json", "r") as sentinel_data:
             json_data = sentinel_data.read()
@@ -56,16 +59,25 @@ class TestQuerySentinelProducts:
 
         assert_that(result.success).is_true()
         assert_that(result.body).is_equal_to(sentinel_data)
-        assert_that(responses.calls[0].request.url).is_equal_to(expected_url)
+
+        url = responses.calls[0].request.url
+
+        assert_that(get_query_parameters_of_url(url)).is_equal_to(
+            expected_query_parameters
+        )
+        assert_that(url).starts_with("https://scihub.copernicus.eu/dhus/search?")
 
     @responses.activate
     def test_when_failure_response_from_sentinel_hub_then_returns_failure(self):
-        expected_url = (
-            "https://scihub.copernicus.eu/dhus/search?q=platformname:Sentinel-1"
-            "%20AND%20producttype:GRD%20AND%20NOT%20(cloudcoverpercentage:"
-            "%5B5%20TO%2010%5D%20OR%20cloudcoverpercentage:%5B45%20TO%2050%5D)"
-            "&start=0&rows=30&format=json"
-        )
+        expected_query_parameters = {
+            "q": [
+                "platformname:Sentinel-1 AND producttype:GRD AND NOT "
+                "(cloudcoverpercentage:[5 TO 10] OR cloudcoverpercentage:[45 TO 50])"
+            ],
+            "start": ["0"],
+            "rows": ["30"],
+            "format": ["json"],
+        }
 
         responses.add(
             responses.GET,
@@ -99,7 +111,13 @@ class TestQuerySentinelProducts:
 
         assert_that(result.success).is_false()
         assert_that(result.status_code).is_equal_to(401)
-        assert_that(responses.calls[0].request.url).is_equal_to(expected_url)
+
+        url = responses.calls[0].request.url
+
+        assert_that(get_query_parameters_of_url(url)).is_equal_to(
+            expected_query_parameters
+        )
+        assert_that(url).starts_with("https://scihub.copernicus.eu/dhus/search?")
 
     @responses.activate
     def test_when_error_when_calling_api_then_returns_error_result(self):
