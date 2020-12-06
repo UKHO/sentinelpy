@@ -39,7 +39,7 @@ requests = "^2.25.0"
 
 [tool.poetry.dev-dependencies]
 assertpy = "^1.1"
-bandit = "^1.6.2"
+bandit = "^1.6.3"
 black = "^19.10b0"
 coverage = "^5.3"
 flake8 = "^3.8.4"
