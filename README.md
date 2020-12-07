@@ -314,7 +314,7 @@ If the query has `and_` or `or_` operators at the start or an operator at the en
 **Example**
 
 ```python
-from query_sentinel_hub import RequestQueryBuilder, PlatformName
+from sentinelpy import RequestQueryBuilder, PlatformName
 
 default_build_behaviour = RequestQueryBuilder().build()
 
@@ -718,7 +718,7 @@ Filter sentinel products on timeliness
 <p>
 
 ```python
-from query_sentinel_hub import RequestQueryBuilder, PlatformName
+from sentinelpy import RequestQueryBuilder, PlatformName
 
 simple_q = (
     RequestQueryBuilder()
@@ -908,7 +908,7 @@ erroneous_response = QuerySentinelProductsResponse(None, None, IOError())
 assert not erroneous_response.success
 assert erroneous_response.status_code is None
 assert erroneous_response.body is None
-assert erroneous_response.error == IOError()
+assert isinstance(erroneous_response.error, IOError)
 
 # Using the functional style methods
 successful_response.on_success(
