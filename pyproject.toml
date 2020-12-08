@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "sentinelpy"
-version = "0.1.0"
+version = "0.1.1"
 authors = [
     "UK Hydrographic Office <datascienceandengineering@ukho.gov.uk>"
 ]
