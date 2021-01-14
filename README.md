@@ -2,6 +2,7 @@
 
 ![Python Package](https://github.com/UKHO/sentinelpy/workflows/Python%20Package/badge.svg?branch=main)
 [![Dependabot Status](https://api.dependabot.com/badges/status?host=github&repo=UKHO/sentinelpy&identifier=304287716)](https://dependabot.com)
+![PyPI - Downloads](https://img.shields.io/pypi/dm/sentinelpy)
 
 Queries ESA Sentinel APIs for products
 
