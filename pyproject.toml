@@ -52,7 +52,7 @@ tox-gh-actions = "^2.4.0"
 tox = "^3.21.2"
 toml = "^0.10.2"
 responses = "^0.12.1"
-mypy = "^0.790"
+mypy = "^0.800"
 
 [tool.pytest.ini_options]
 addopts = "--cov=sentinelpy --cov-fail-under=95"
