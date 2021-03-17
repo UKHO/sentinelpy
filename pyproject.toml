@@ -51,7 +51,7 @@ pytest = "^6.2.2"
 tox-gh-actions = "^2.4.0"
 tox = "^3.21.4"
 toml = "^0.10.2"
-responses = "^0.12.1"
+responses = "^0.13.0"
 mypy = "^0.800"
 
 [tool.pytest.ini_options]
