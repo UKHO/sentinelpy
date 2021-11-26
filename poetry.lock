@@ -243,7 +243,7 @@ colors = ["colorama (>=0.4.3,<0.5.0)"]
 
 [[package]]
 name = "liccheck"
-version = "0.5.3"
+version = "0.6.4"
 description = "Check python packages from requirement.txt and report issues"
 category = "dev"
 optional = false
@@ -251,7 +251,7 @@ python-versions = ">=2.7"
 
 [package.dependencies]
 configparser = {version = "*", markers = "python_version >= \"3.4\""}
-semantic_version = ">=2.7.0"
+semantic-version = ">=2.7.0"
 toml = "*"
 
 [[package]]
@@ -612,7 +612,7 @@ testing = ["pytest (>=3.5,!=3.7.3)", "pytest-checkdocs (>=1.2.3)", "pytest-flake
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.6"
-content-hash = "aaf381e8860786bcc75708120e55d3b18dacc90be7c1f604ac8b5f37d12b70b0"
+content-hash = "d66918948fb0c035e0b59e790cea9f4b8b89645d2eb3c3d6afa620cdde2f9330"
 
 [metadata.files]
 appdirs = [
@@ -748,7 +748,8 @@ isort = [
     {file = "isort-5.8.0.tar.gz", hash = "sha256:0a943902919f65c5684ac4e0154b1ad4fac6dcaa5d9f3426b732f1c8b5419be6"},
 ]
 liccheck = [
-    {file = "liccheck-0.5.3.tar.gz", hash = "sha256:f5cfb302317c70353d189e72c7535b1a8196a4b82d4cc464d7371625497e240a"},
+    {file = "liccheck-0.6.4-py2.py3-none-any.whl", hash = "sha256:ee490972239413c7087d9f7f60a43d03943f768162000a3f9d5bf0e82ed098b1"},
+    {file = "liccheck-0.6.4.tar.gz", hash = "sha256:049b53fab91813182ea1073cf1a53ba63eed8cbccb792942989935253ca3dffb"},
 ]
 mccabe = [
     {file = "mccabe-0.6.1-py2.py3-none-any.whl", hash = "sha256:ab8a6258860da4b6677da4bd2fe5dc2c659cff31b3ee4f7f5d64e79735b80d42"},
