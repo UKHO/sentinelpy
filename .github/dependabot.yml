@@ -21,3 +21,4 @@ updates:
   - dependency-name: tox
     versions:
     - 3.22.0
+
