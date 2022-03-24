@@ -1,6 +1,24 @@
 version: 2
 updates:
-  - package-ecosystem: "pip"
-    directory: "/"
-    schedule:
-      interval: "daily"
+- package-ecosystem: pip
+  directory: "/"
+  schedule:
+    interval: daily
+  open-pull-requests-limit: 10
+  ignore:
+  - dependency-name: black
+    versions:
+    - ">= 20.8b1.a, < 20.9"
+  - dependency-name: liccheck
+    versions:
+    - 0.5.2
+  - dependency-name: isort
+    versions:
+    - 5.8.0
+  - dependency-name: responses
+    versions:
+    - 0.13.0
+  - dependency-name: tox
+    versions:
+    - 3.22.0
+
